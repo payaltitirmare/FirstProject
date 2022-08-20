@@ -22,9 +22,9 @@ public class Serching {
 				System.out.println("array is found at location"+" "+index);
 			}
 			else {
-				System.out.println("not found");
+				System.out.println("array is not found at any location");
+				
 			}
 		}
 	}
 
-S
