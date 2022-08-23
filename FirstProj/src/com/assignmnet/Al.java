@@ -14,8 +14,11 @@ public class Al {
 		
 		l.add("yyy");
 		l.add("oo");
-		
+		l.add("eee");
+		l.add("dd");
+		System.out.println(l);
 		String ar[] = new String [l.size()] ;
+		
 		
 		l.toArray(ar);
 		
