@@ -1,6 +1,7 @@
 package com.collectionss;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class SortExample {
 
@@ -9,9 +10,10 @@ public class SortExample {
 		
 		ArrayList <Emp> emps = new ArrayList<> ();
 		
-		emps.add (new Emp(name:"payal", phone:"34", empid: 12));
-		emps.add(new Emp(name:"saurabh", phone:"2344",empid:44));
+		emps.add (new Emp("payal", "34",  12));
+		emps.add(new Emp("saurabh","2344",44));
 		
+		System.out.println(emps);
 	}
 
 

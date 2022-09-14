@@ -2,6 +2,7 @@ package com.collectionss;
 
 public class Comparator1 implements Comparable<Comparator1>{
 
+	//this is program for comparable....
 	private int id;
 	private String name;
 	private int age;
@@ -21,15 +22,7 @@ public class Comparator1 implements Comparable<Comparator1>{
 	@Override
 	public int compareTo(Comparator1 o) {
 		
-		if(this.id==o.id)
-			return 0;
-		
-		else if(this.id>o.id)
-			return 1;
-		else
-			return -1;
-					
-		
+		return this.id - o.id;
 	}
 
 

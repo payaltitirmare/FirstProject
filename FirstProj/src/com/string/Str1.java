@@ -11,7 +11,7 @@ public class Str1 {
 		
 		//string concatness. combine.
 		
-		String str4=str+str1;
+		String str4 = str+str1;
 		
 		System.out.println(str4);
 	}

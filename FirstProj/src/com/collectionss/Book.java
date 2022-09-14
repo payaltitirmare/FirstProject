@@ -18,6 +18,7 @@ public class Book {
 	public static void main(String[] args) {
 	
 		ArrayList<Book> tech_book=new ArrayList<>();
+		
 		tech_book.add(new Book(1,"C++ by Kanetkar sir",344.32));
 		tech_book.add(new Book(2,"Head First Java",365.23));
 		tech_book.add(new Book(3,"Head First Servlet",356.45));

@@ -2,18 +2,28 @@ package com.string;
 
 public class StringConcepts1 {
 
-	public static void main(String[] args) {
-	//find string length ignore space	
-		String str="java codes";
-		
-		int count=0;
-		
-		for(int i=0;i<str.length();i++) {
-			if(str.charAt(i) !=' ')
-			{
-				count++;
-			}
-		}
-		System.out.println(count);
+	
+	int id ;
+	String name;
+	
+	public StringConcepts1(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
 	}
+
+	public static void main(String[] args) {
+	
+		StringConcepts1 sc = new StringConcepts1(22,"payal");
+		
+		//System.out.println(sc);
+		
+		System.out.println(sc.id+" "+ sc.name);
+	}
+
+	@Override
+	public String toString() {
+		return "StringConcepts1 [id=" + id + ", name=" + name + "]";
+	}
+	
 }

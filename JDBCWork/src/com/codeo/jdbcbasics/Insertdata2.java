@@ -13,6 +13,7 @@ public class Insertdata2 {
 				//Register JDBC Driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			//establish the connection
+			
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/employee","root","");
 			//create Statement object
 			Statement statement=null;

@@ -15,6 +15,9 @@ public class Comparator2  {
 		ar.add(new Comparator1(13,"usha",42));
 		ar.add(new Comparator1(3,"radheshyam",57));
 		
+		/* for comparable interfacae 
+		 * 
+	
 		System.out.println(ar);
 		Collections.sort(ar);
 		
@@ -27,10 +30,25 @@ public class Comparator2  {
 			System.out.println(itr.next());
 		}
 
-		//reverse order 
+	*/
+		//for comparator  logic
 		
-			
+		Collections.sort(ar, new IdComparator()); //we are passing comparator object for sorting 
 		
+		System.out.println(ar);
+		
+		
+			//sorting for comparator on the basis of age
+		
+		ArrayList<Comparator1> ar11= new ArrayList <>(ar);
+		
+		
+		Collections.sort(ar11,new AgeComparator()); //on the age basis
+		
+		System.out.println(ar11);
+		
+		Collections.sort(ar11,new  Namecomparator());  //on the name basis ...
+		System.out.println(ar11);
 
 	}
 

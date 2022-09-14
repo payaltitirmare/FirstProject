@@ -10,10 +10,11 @@ public class Test {
 	}
 	
 	public static void main(String[] args) {
+		
 		Test t1=new Test();
-		int v=t1.m1(10);
+		int v= t1.m1(10); 
 		System.out.println(v);
-		pubmodifier pub=new pubmodifier();
+		pubmodifier pub= new pubmodifier();
 		pub.max();
 		
 		System.out.println(pub.a);
