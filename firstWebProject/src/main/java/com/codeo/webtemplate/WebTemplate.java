@@ -31,7 +31,7 @@ public class WebTemplate extends HttpServlet {
 		gender=req.getParameter("gender");
 		hobbies=req.getParameterValues("hobbies");
 		education = req.getParameter("education");
-		pw.println("<h1>welcome Dear User <h1>");
+		pw.println("<h1>welcome Dear "+name+"  <h1>");
 		pw.println("welcome mr/miss : "+name);
 		pw.print("<br/>");
 		pw.println("your email is :"+email);
