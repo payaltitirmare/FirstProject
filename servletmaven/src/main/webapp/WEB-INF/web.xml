@@ -16,6 +16,34 @@
   	<description></description>
   	<servlet-class>com.codeo.servletmavenproj.VoterApp</servlet-class>
   </servlet>
+ 
+  <servlet>
+  	<servlet-name>AgeCalculator</servlet-name>
+  	<display-name>AgeCalculator</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.servletmavenproj.AgeCalculator</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetriewData</servlet-name>
+  	<display-name>RetriewData</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.servletmavenproj.RetriewData</servlet-class>
+  </servlet>
+ 
+  <servlet>
+  	<servlet-name>DbForm</servlet-name>
+  	<display-name>DbForm</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.DatabaseConnection.DbForm</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Formpopup</servlet-name>
+  	<display-name>Formpopup</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.DatabaseConnection.Formpopup</servlet-class>
+  </servlet>
+  
+ 
   <servlet-mapping>
   	<servlet-name>FirstForm</servlet-name>
   	<url-pattern>/Form</url-pattern>
@@ -24,4 +52,23 @@
   	<servlet-name>VoterApp</servlet-name>
   	<url-pattern>/voterapp</url-pattern>
   </servlet-mapping>
+ 
+  <servlet-mapping>
+  	<servlet-name>AgeCalculator</servlet-name>
+  	<url-pattern>/Logicdetail</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetriewData</servlet-name>
+  	<url-pattern>/RetriewData</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>DbForm</servlet-name>
+  	<url-pattern>/popupform</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Formpopup</servlet-name>
+  	<url-pattern>/Formpop</url-pattern>
+  </servlet-mapping>
+ 
 </web-app>
