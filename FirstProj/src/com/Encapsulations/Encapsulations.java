@@ -16,16 +16,21 @@ public class Encapsulations {  //this class extended by run class
 	
 	
 	//this is constructor
+
 	public Encapsulations(int account_no, String name, double balance) {
 		super();
 		this.account_no = account_no;
 		this.name = name;
 		this.balance = balance;
 	}
+	
+	public Encapsulations() {
+		// TODO Auto-generated constructor stub
+	}
 
-	
-	
-	
+
+
+
 	public void setaccount( int account_no)
 	{
 		this.account_no=account_no;

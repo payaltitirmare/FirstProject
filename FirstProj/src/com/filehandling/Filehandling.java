@@ -7,7 +7,6 @@ public class Filehandling {
 
 	public static void main(String[] args) throws IOException
 	{
-	
 
 		File file=new File("D://internship data//payal.docs");
 	      file.createNewFile();
@@ -26,12 +25,8 @@ public class Filehandling {
 				fos.write(arr[i]);
 			}
 			 System.out.println("The length of the file will be: "+file.length());
-		
-		
-		
 	
 	}
-	
-	
+		
 }
  

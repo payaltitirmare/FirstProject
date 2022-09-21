@@ -32,6 +32,7 @@ PrintWriter pw = response.getWriter();
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		
+		System.out.println(name);
 		System.out.println(password);
 		System.out.println("inserted into backend");
 		pw.println("data is inserted  "+password);
