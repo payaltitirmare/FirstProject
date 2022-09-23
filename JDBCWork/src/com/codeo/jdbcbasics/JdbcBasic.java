@@ -38,6 +38,7 @@ public class JdbcBasic {
 			System.out.println(resultset.getInt(1)+",  "+resultset.getString(2)+",  "+resultset.getString(3)+",  "+resultset.getString(4));
 		}
 		
+		
 		resultset.close();
 		 statement.close();
 		 con .close();

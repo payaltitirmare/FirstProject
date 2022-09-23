@@ -30,6 +30,12 @@
   	<description></description>
   	<servlet-class>com.codeo.studentDetails.StudentDetails</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RetriewData</servlet-name>
+  	<display-name>RetriewData</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.studentDetails.RetriewData</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Form</servlet-name>
   	<url-pattern>/Form</url-pattern>
@@ -45,5 +51,9 @@
   <servlet-mapping>
   	<servlet-name>StudentDetails</servlet-name>
   	<url-pattern>/StudentForm</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetriewData</servlet-name>
+  	<url-pattern>/RetriewData</url-pattern>
   </servlet-mapping>
 </web-app>

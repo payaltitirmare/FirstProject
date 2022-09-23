@@ -11,7 +11,7 @@ public class IsPalindrome {
 	public boolean ispalindrome(String s)
 	{
 	       s.toLowerCase();
-	       System.out.println(s.indexOf('p'));
+	     
 	       
 		for(int i=0;i<s.length();i++)
 		{
