@@ -7,20 +7,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class RetriewDOB {
+public class RetrDOB {
 
+	
 	String table_name=null;
 	PrintWriter pw =null;
 	
-	public  void GetData() {
-		
-		RetriewData rd = new RetriewData();
-		 table_name = rd.gettable_name();
-	     pw = rd.getpw();
-		
-		
-	System.out.println(rd.gettable_name());
-	System.out.println(rd.getpw());
+	
+	public RetrDOB(String table_name, PrintWriter pw) {
+		this.table_name=table_name;
+		this.pw = pw;
+	}
+
+
+	public  void displayData() {
 	
 		 try {
 				Class.forName("com.mysql.cj.jdbc.Driver");
@@ -54,5 +54,4 @@ public class RetriewDOB {
 			e.printStackTrace();
 		}
 	}
-		
 }

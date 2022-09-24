@@ -1,0 +1,17 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>ReportCard_Generator</servlet-name>
+  	<display-name>ReportCard_Generator</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.reportcard_generator.ReportCard_Generator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ReportCard_Generator</servlet-name>
+  	<url-pattern>/ReportCard_Generator</url-pattern>
+  </servlet-mapping>
+</web-app>
