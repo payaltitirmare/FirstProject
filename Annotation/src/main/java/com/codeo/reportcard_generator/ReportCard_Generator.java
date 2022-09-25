@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+@MultipartConfig 
 @WebServlet("/Registration")
-@MultipartConfig
+
 public class ReportCard_Generator extends HttpServlet {
-	private static final long serialVersionUID = 1L;
- 
-	String  firstname =null;
-	String lastname=null;
-	String email=null;
+	
+	String  firstname=null ;
+	String lastname =null;
+	String email =null;
 	String password=null;
 	String gender = null;
 	String branch=null;
@@ -30,8 +30,11 @@ public class ReportCard_Generator extends HttpServlet {
 	int dbms =0;
 	int os = 0;
 	int total_marks;
-	float percentages;
-	float average;
+	double percentage;
+	double average;
+	String grade=null;
+	String result;
+	String wish;
 	PrintWriter pw = null;
 	
  
@@ -56,20 +59,121 @@ public class ReportCard_Generator extends HttpServlet {
 	    
 		hobbies = request.getParameterValues("hobbies");
 		
-		pw.println("hobbies :");
+		System.out.println(age+" "+dbms+" "+gender+" "+branch);
 		
-		for(int i=0 ; i< hobbies.length ; i++)
+		
+		Part file = request.getPart("profilepic");
+		System.out.println(file);
+		
+		String imagefileimage = file.getSubmittedFileName();
+		
+		if(file != null)
 		{
-			pw.print(hobbies[i]);
+			System.out.println(file.getContentType());
 		}
-		
-		Part file = request.getPart("profile-pic");
-		String profile_pic = file.getSubmittedFileName();
 		
 		InputStream ios = null;
 		ios = file.getInputStream();
 		
-		System.out.println(profile_pic);
+		 total_marks = data_structure + dbms + os ;
+		
+		//logical part
+	
+        percentage = total_marks/300.0*100;
+		
+		average = total_marks/3;
+			
+		if(percentage <= 100 && percentage >=60)
+		{
+			result ="pass";
+			grade = "firstclass";
+		}
+		else if(percentage < 60 && percentage >= 40)
+		{
+			result="pass";
+			grade = "second class";
+		}
+		else
+		{
+			result ="fail";
+			grade = "third class";
+		}
+		if(result.equals("pass"))
+		{
+			wish="congratulations";
+		}
+		else {
+			wish="You fail";
+		}
+		
+		ReportCard_Generator rc = new ReportCard_Generator();
+		
+		rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,dbms,os,data_structure,total_marks,grade,result,hobbies,email,wish);
+		
+		RportCardDOB reportdob = new RportCardDOB(imagefileimage, imagefileimage, imagefileimage, imagefileimage, imagefileimage, imagefileimage, age, age, age, age, age, average, average, ios, pw);
+		reportdob.ReportConnection();
+	}	
+	
+     public void Design(PrintWriter pw, String firstname, String lastname, String gender, String branch, int age, String dob, double average, int dbms, int os, int data_structure, int total_marks, String grade, String result, String[] hobbies, String email, String wish) {
+		
+	pw.println("<h1 style='text-align:center; color:green;font-size: 50px'> Report generator </h1>");
+	pw.println("<h1 style='text-align:center '> Student Name :" +firstname + " "+lastname +"</h1>");
+	//pw.println("<h1 style='text-align:center ;color:#0000FF'> Student email : "+email+" </h1>");
+	pw.println("<h1 style='text-align:center'>Roll no : 12</h1>");
+	
+	  pw.print("<h1 style='text-align:center;color:#D2691E'>hobbies : </h1>");
+		for(int i=0 ; i< hobbies.length ; i++)
+		{
+			pw.print("<h2 style='text-align:center'>"+hobbies[i]+"</h2>");
+		}
+	  
+      pw.println("<table >"
+    		  +"       <tr >"
+    		   +"     <th colspan = '7' style='border-style:solid; border-color:#96D4D4;border-collapse: collapse;color:#00FF00'><h1>Name :    "+firstname+ lastname+" </h1> </th>"
+    		   +"       </tr>"
+    		   + "      <tr >"
+    		  +"      <th colspan = '7'style='border-style:solid; border-color: #96D4D4 ;color:#00FF00'><h1> gender:    "+gender+" </h1> </th> "
+    		  +"     </tr>"
+    		  + "      <tr >"
+    		  + "      <tr >"
+    		  +"      <th colspan = '7' style='border-style:solid; border-color: #96D4D4;color:#00FF00'><h1> Branch:    "+branch+" </h1> </th> "
+    		  +"     </tr>"
+    		  +"      <th colspan = '7' style='border-style:solid; border-color: #96D4D4;color:#00FF00'><h1> Age:    "+age+" </h1> </th> "
+    		  +"     </tr>"
+    		  + "      <tr >"
+    		  +"      <th colspan = '7' style='border-style:solid; border-color: #96D4D4;color:#00FF00'><h1> DOB:    "+dob+" </h1> </th> "
+    		  +"     </tr>"
+    		  + "      <tr>" 
+    		  +"      <th colspan = '3' style='border-style:solid; border-color: #96D4D4;color:#FA8072' ><h1>Marks </h1></th> "
+    		  +"      <th colspan = '4' style='border-style:solid; border-color: #96D4D4' > </th> "
+    		  +"     </tr>"
+    		 
+      		+ "      <tr style='color:blue'>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'><h1>data structure </h1></td>"
+      		+"     <td style='border-style:solid; border-color: #96D4D4'><h1> dbms </h1></td>"  
+      		+"      <td style='border-style:solid; border-color: #96D4D4'><h1> OS </h1></td>"
+      		+"      <td style='border-style:solid; border-color: #96D4D4'><h1> total_marks </h1></td>"
+      		+"     <td style='border-style:solid; border-color: #96D4D4'><h1> percentage </h1></td>"
+      		+"     <td style='border-style:solid; border-color: #96D4D4'><h1> grade </h1></td>"
+      		+"      <td style='border-style:solid; border-color: #96D4D4'><h1> result </h1></td>"
+      		+ "  </tr> <br><br>"
+      		
+      		
+      		+ "  <tr style= 'color: red ;font-size: 40px;border-style:solid; border-color: #96D4D4'>"
+      		+ "    <td  style='border-style:solid; border-color: #96D4D4'>"+ data_structure+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ dbms + "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ os+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ total_marks+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ average+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4; color:#800080'>"+ grade+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4;color: #FFFF00'>  "+ result + "</td>"
+      		+"       </tr>"
+      		+"        <tr>"
+      		+"     <td colspan='7' style='color:#CD5C5C ;border-style:solid; border-color: #96D4D4;font-size: 40px'>  "+ wish + " </td>"
+      		+"          </tr>"
+      		+ "</table>");
 	}
-
+	
+	
+	
 }

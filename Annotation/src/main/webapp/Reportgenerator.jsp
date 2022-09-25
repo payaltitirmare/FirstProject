@@ -6,7 +6,7 @@
 
 </head>
 <body>
-<form action="Registration" method="post" enctype="multipart/form-data">
+<form action="Registration" method="post" enctype="multipart/form-data" >
 
 <section class="h-100 bg-dark">
   <div class="container py-5 h-100">
@@ -44,26 +44,21 @@
                   <h6 class="mb-0 me-4">Gender: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="option1" />
+                    <input  type="radio"  name="gender" class="form-check-input"  id="femaleGender" value="female" >
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="option2" />
+                    <input type="radio" name="gender" class="form-check-input"  id="maleGender"  value="male" >
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0">
-                    <input class="form-check-input" type="radio" name="gender" id="otherGender"
-                      value="option3" />
+                    <input type="radio" name="gender" class="form-check-input"  id="otherGender" value="other" />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
 
                 </div>
-
-               
                 <div class="form-outline mb-4">
                   <input type="email" name="email" id="form3Example97" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example97">Email ID</label>
@@ -75,24 +70,24 @@
                 </div>
                
                <div>
-                <label style="color:blue">Student ProfilePic : </label>
-               <input type="file" name="profile-pic" >
-              
                
-               </div>
+               <input type="file" name="profilepic">
+               
+              </div>
+                
                <br><br>
                 <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="branch">
-                      <option value="1">Branch</option>
-                      <option value="2">Civil Engineering</option>
-                      <option value="3">Computer Engineering</option>
-                      <option value="4">Electrical Engineering</option>
-                      <option value="5">Chemical Engineering</option>
-                       <option value="6">Mechanical Engineering</option>
-                      <option value="7">Aeronautical Engineering</option>
-                             </select>
+                    <select  name="branch">
+                      <option value="Branch">Branch</option>
+                      <option value="Civil Engineer">Civil Engineering</option>
+                      <option value="Computer Engineer">Computer Engineering</option>
+                      <option value="Electrical Engineer">Electrical Engineering</option>
+                      <option value="chemical Enginner">Chemical Engineering</option>
+                       <option value="Mechanical Engineer">Mechanical Engineering</option>
+                      <option value="Aeronautical Engineer">Aeronautical Engineering</option>
+                       </select>
                 </div>
              </div>
                 <div class="form-outline mb-4">
@@ -105,36 +100,30 @@
                   <label class="form-label" for="form3Example99">Age</label>
                 </div>
 
-                
-               <div class="form-outline mb-4">
-                <label   class="form-label" for="form3Example97" style="color:Black">Hobbies :</label>
-               <input type="checkbox" name= "hobbies"  />
+                <div class="form-outline mb-4" style="color:black">
+                <label >Hobbies :</label>
+               <input type="checkbox" name= "hobbies" value="singing">
                <label>Singing</label>
-               <input type="checkbox" name="hobbies"  />
+               <input type="checkbox" name="hobbies" value="dancing">
                <label>Dancing</label>
-                <input type="checkbox" name="hobbies"  />
+                <input type="checkbox" name="hobbies" value="playing">
                <label>Playing</label>
-               <input type="checkbox" name="hobbies"  />
-               <label>Reading</label>
-                <input type="checkbox" name="hobbies"  />
-               <label>Drawing</label>
+              
                </div>
-               
+            
                  <div class="form-outline mb-4">
                  <label>DSA Marks</label>
-                 <input name="text" name="DSA" placeholder="Data structure marks" id="form3Example99" class="form-control form-control-lg">
+                 <input type="text" name="DSA" placeholder="Data structure marks" id="form3Example99" class="form-control form-control-lg">
                  <label>DBMS Marks</label>
-                 <input name="text" name="DBMS" placeholder="Databsemanagement system " id="form3Example99" class="form-control form-control-lg">
+                 <input type="text" name="DBMS" placeholder="Databsemanagement system " id="form3Example99" class="form-control form-control-lg">
                  <label>OS Marks</label>
                  <input type="text" name="OS" placeholder="Operating System" id="form3Example99" class="form-control form-control-lg">
                  
                  </div>  
 
-                <div class="d-flex justify-content-end pt-3">
-                  <button type="reset" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
-                </div>
-
+             <div>
+                  <button type="submit" >Submit form</button>
+              </div>
               </div>
            </div></div>
            </div>
@@ -143,7 +132,6 @@
        </div>
   </section>
    
-
 </form>
 </body>
 </html>
