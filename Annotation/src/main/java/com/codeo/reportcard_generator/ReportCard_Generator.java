@@ -127,7 +127,7 @@ public class ReportCard_Generator extends HttpServlet {
 			pw.print("<h2 style='text-align:center'>"+hobbies[i]+"</h2>");
 		}
 	  
-      pw.println("<table >"
+      pw.println("<table align='center'>"
     		  +"       <tr >"
     		   +"     <th colspan = '7' style='border-style:solid; border-color:#96D4D4;border-collapse: collapse;color:#00FF00'><h1>Name :    "+firstname+ lastname+" </h1> </th>"
     		   +"       </tr>"
