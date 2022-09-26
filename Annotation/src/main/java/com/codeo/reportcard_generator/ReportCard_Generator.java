@@ -65,7 +65,7 @@ public class ReportCard_Generator extends HttpServlet {
 		Part file = request.getPart("profilepic");
 		System.out.println(file);
 		
-		String imagefileimage = file.getSubmittedFileName();
+		//String imagefileimage = file.getSubmittedFileName();
 		
 		if(file != null)
 		{
@@ -79,9 +79,9 @@ public class ReportCard_Generator extends HttpServlet {
 		
 		//logical part
 	
-        percentage = total_marks/300.0*100;
-		
-		average = total_marks/3;
+		 percentage = total_marks/300.0*100;
+			
+			average = total_marks/3;
 			
 		if(percentage <= 100 && percentage >=60)
 		{
@@ -108,14 +108,15 @@ public class ReportCard_Generator extends HttpServlet {
 		
 		ReportCard_Generator rc = new ReportCard_Generator();
 		
-		rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,dbms,os,data_structure,total_marks,grade,result,hobbies,email,wish);
+rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,dbms,os,data_structure,total_marks,grade,result,hobbies,email,wish);
 		
-		RportCardDOB reportdob = new RportCardDOB(imagefileimage, imagefileimage, imagefileimage, imagefileimage, imagefileimage, imagefileimage, age, age, age, age, age, average, average, ios, pw);
+		RportCardDOB reportdob = new RportCardDOB(firstname, lastname, email, password, gender, branch, age,  data_structure, dbms, os, total_marks, percentage, average,ios,pw);
 		reportdob.ReportConnection();
+	
 	}	
 	
-     public void Design(PrintWriter pw, String firstname, String lastname, String gender, String branch, int age, String dob, double average, int dbms, int os, int data_structure, int total_marks, String grade, String result, String[] hobbies, String email, String wish) {
-		
+	 public void Design(PrintWriter pw, String firstname, String lastname, String gender, String branch, int age, String dob, double average, int dbms, int os, int data_structure, int total_marks, String grade, String result, String[] hobbies, String email, String wish) {
+			
 	pw.println("<h1 style='text-align:center; color:green;font-size: 50px'> Report generator </h1>");
 	pw.println("<h1 style='text-align:center '> Student Name :" +firstname + " "+lastname +"</h1>");
 	//pw.println("<h1 style='text-align:center ;color:#0000FF'> Student email : "+email+" </h1>");
@@ -164,7 +165,7 @@ public class ReportCard_Generator extends HttpServlet {
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ dbms + "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ os+ "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ total_marks+ "</td>"
-      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ average+ "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ average + "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4; color:#800080'>"+ grade+ "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4;color: #FFFF00'>  "+ result + "</td>"
       		+"       </tr>"
