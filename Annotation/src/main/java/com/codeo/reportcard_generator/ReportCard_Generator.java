@@ -3,6 +3,7 @@ package com.codeo.reportcard_generator;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -30,8 +31,9 @@ public class ReportCard_Generator extends HttpServlet {
 	int dbms =0;
 	int os = 0;
 	int total_marks;
-	double percentage;
-	double average;
+	float percentage;
+	float twoDigitsF;
+	float average;
 	String grade=null;
 	String result;
 	String wish;
@@ -79,9 +81,14 @@ public class ReportCard_Generator extends HttpServlet {
 		
 		//logical part
 	
-		 percentage = total_marks/300.0*100;
+		 percentage = total_marks/300.0f*100;
 			
-			average = total_marks/3;
+		//converting long decimal digits in only 2 digits
+		 DecimalFormat decimalformat = new DecimalFormat("#.##");
+			
+			twoDigitsF = Float.valueOf(decimalformat.format(percentage));
+		 
+			average = total_marks/3.0f;
 			
 		if(percentage <= 100 && percentage >=60)
 		{
@@ -103,19 +110,21 @@ public class ReportCard_Generator extends HttpServlet {
 			wish="congratulations";
 		}
 		else {
-			wish="You fail";
+			wish="Sorry You fail";
 		}
 		
 		ReportCard_Generator rc = new ReportCard_Generator();
 		
-rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,dbms,os,data_structure,total_marks,grade,result,hobbies,email,wish);
+rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,twoDigitsF,dbms,os,data_structure,total_marks,grade,result,hobbies,email,wish);
 		
-		RportCardDOB reportdob = new RportCardDOB(firstname, lastname, email, password, gender, branch, age,  data_structure, dbms, os, total_marks, percentage, average,ios,pw);
+		RportCardDOB reportdob = new RportCardDOB(firstname, lastname, email, password, gender, branch, age,  data_structure, dbms, os, total_marks, twoDigitsF, average,ios,pw);
 		reportdob.ReportConnection();
 	
 	}	
 	
-	 public void Design(PrintWriter pw, String firstname, String lastname, String gender, String branch, int age, String dob, double average, int dbms, int os, int data_structure, int total_marks, String grade, String result, String[] hobbies, String email, String wish) {
+	public void Design(PrintWriter pw, String firstname, String lastname, String gender, String branch, int age,
+			String dob, float average, float twoDigitsF, int dbms, int os, int data_structure, int total_marks,
+			String grade, String result, String[] hobbies, String email, String wish) {
 			
 	pw.println("<h1 style='text-align:center; color:green;font-size: 50px'> Report generator </h1>");
 	pw.println("<h1 style='text-align:center '> Student Name :" +firstname + " "+lastname +"</h1>");
@@ -165,7 +174,7 @@ rc.Design(pw,firstname,lastname,gender,branch,age,dob,average,dbms,os,data_struc
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ dbms + "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ os+ "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ total_marks+ "</td>"
-      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+ average + "</td>"
+      		+ "    <td style='border-style:solid; border-color: #96D4D4'>"+twoDigitsF+ "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4; color:#800080'>"+ grade+ "</td>"
       		+ "    <td style='border-style:solid; border-color: #96D4D4;color: #FFFF00'>  "+ result + "</td>"
       		+"       </tr>"

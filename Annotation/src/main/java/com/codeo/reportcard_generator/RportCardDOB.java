@@ -22,8 +22,8 @@ public class RportCardDOB {
 	int dbms =0;
 	int os = 0;
 	int total_marks;
-	double percentage;
-	double average;
+	float twoDigitsF;
+	float average;
 	InputStream ios;
 	PrintWriter pw = null;
 	
@@ -31,7 +31,7 @@ public class RportCardDOB {
 	
 	public RportCardDOB(String firstname, String lastname, String email, String password, String gender,
 			String branch, int age, int data_structure, int dbms, int os, int total_marks,
-			double percentage, double average, InputStream ios, PrintWriter pw) {
+			float twoDigitsF,float average, InputStream ios, PrintWriter pw) {
 		
 		this.firstname=firstname;
 		this.lastname= lastname;
@@ -44,7 +44,7 @@ public class RportCardDOB {
 		this.dbms=dbms;
 		this.os = os;
 		this.total_marks=total_marks;
-		this.percentage=percentage;
+		this.twoDigitsF=twoDigitsF;
 		this.average = average;
 		this.ios = ios;
 		this.pw =pw;
@@ -80,13 +80,13 @@ public class RportCardDOB {
 			psmt.setInt(9, dbms);
 			psmt.setInt(10, os);
 			psmt.setInt(11, total_marks);
-			psmt.setDouble(12, percentage);
-			psmt.setDouble(13, average);
+			psmt.setFloat(12, twoDigitsF);
+			psmt.setFloat(13, average);
 			psmt.setBlob(14 ,ios);
 			
 		}
 		
-		System.out.println("percentage  in db :"+percentage);
+		System.out.println("percentage  in db :"+twoDigitsF);
 		System.out.println("image are in db : "+ios);
 		System.out.println("total marks in db :"+total_marks);
 		
