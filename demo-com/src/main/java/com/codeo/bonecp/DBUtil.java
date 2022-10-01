@@ -18,6 +18,7 @@ public class DBUtil {
 	
 	private static Properties properties = null;
 	private static BoneCP dataSource;
+	
 	static {
 		try {
 			properties = new Properties();

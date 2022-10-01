@@ -16,17 +16,7 @@ public class Anagram {
 			char [] a1=str1.toCharArray();
 			char [] a2=str2.toCharArray();
 			
-			//for sorting 
-		/*	char temp;
-			for(int i=0;i<a1.length;i++) {
-				for(int j=i+1;j<a1.length;j++) {
-					if(a1[i]>a1[j]) {
-			         	temp=a1[i];
-						a1[i]=a1[j];
-						a1[j]=temp;
-						}
-						  }
-                               }*/
+		
 			char temp;
 			for(int i=0;i<a1.length;i++) {
 				for(int j=i+1;j<a1.length;j++) {
