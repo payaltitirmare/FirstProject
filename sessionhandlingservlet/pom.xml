@@ -46,6 +46,7 @@
     <version>2.4.7</version>
 </dependency>
 
+
 <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 <dependency>
     <groupId>org.slf4j</groupId>
@@ -53,7 +54,21 @@
     <version>1.7.25</version>
 </dependency>
 
-    
+    <!-- https://mvnrepository.com/artifact/com.jolbox/bonecp-provider -->
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp-provider</artifactId>
+			<version>0.7.1.RELEASE</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>16.0.1</version>
+		</dependency>
+		
+		
   </dependencies>
   <build>
    <plugins>
@@ -65,4 +80,9 @@
     </plugins>
     <finalName>sessionhandlingservlet</finalName>
   </build>
+  
+  	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
 </project>

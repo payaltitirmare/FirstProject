@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action="formsubmit" method="post" >
+<form action="formsubmit" method="post" autocomplete="on" >
 
 <label>Name </label>
 <input type="text" name="personname" ><br>

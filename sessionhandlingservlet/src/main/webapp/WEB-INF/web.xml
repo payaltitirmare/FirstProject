@@ -22,6 +22,18 @@
   	<description></description>
   	<servlet-class>com.codeo.practice.Pracsecond</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SessionHandlingusinghiddenform</servlet-name>
+  	<display-name>SessionHandlingusinghiddenform</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.sessionhandlingusingHiddenform.SessionHandlingusinghiddenform</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>HiddenForm2</servlet-name>
+  	<display-name>HiddenForm2</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.sessionhandlingusingHiddenform.HiddenForm2</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet2</servlet-name>
   	<url-pattern>/Servlet2</url-pattern>
@@ -33,5 +45,13 @@
   <servlet-mapping>
   	<servlet-name>Pracsecond</servlet-name>
   	<url-pattern>/Pracsecond</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SessionHandlingusinghiddenform</servlet-name>
+  	<url-pattern>/SessionHandlingusinghiddenform</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>HiddenForm2</servlet-name>
+  	<url-pattern>/HiddenForm2</url-pattern>
   </servlet-mapping>
 </web-app>
