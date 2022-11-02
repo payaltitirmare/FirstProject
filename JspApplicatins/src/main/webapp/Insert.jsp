@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-
+<%@page errorPage="exception.jsp" %>
 <%@ page import="java.sql.*" %>
 
 <html>
@@ -10,10 +10,9 @@
 </head>
 <body>
 
-
 <%
 
-     String name = null;
+   String name =null;
    String emailid = null;
    String city= null;
    String mob_no = null;
