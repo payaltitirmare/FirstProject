@@ -1,0 +1,37 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>UserManagement</servlet-name>
+  	<display-name>UserManagement</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.ums.controller.UserManagement</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ShowRecord</servlet-name>
+  	<display-name>ShowRecord</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.ums.controller.ShowRecord</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Updatedata</servlet-name>
+  	<display-name>Updatedata</display-name>
+  	<description></description>
+  	<servlet-class>com.codeo.ums.connector.Updatedata</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserManagement</servlet-name>
+  	<url-pattern>/UserManagement</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ShowRecord</servlet-name>
+  	<url-pattern>/ShowRecord</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Updatedata</servlet-name>
+  	<url-pattern>/Updatedata</url-pattern>
+  </servlet-mapping>
+</web-app>
