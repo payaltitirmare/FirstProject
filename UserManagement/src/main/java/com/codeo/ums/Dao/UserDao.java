@@ -84,7 +84,8 @@ public class UserDao {
 				String name = rs.getString("name");
 				String email = rs.getString("email");
 				String country = rs.getString("country");
-				al.add(new User(id, name, email, country)); // we write this type because this is collection and we
+				al.add(new User(id, name, email, country));
+				// we write this type because this is collection and we
 				// want to pass all objectdata to user class contructor .
 				user = new User(id, name, email,country);
 				

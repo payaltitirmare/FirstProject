@@ -26,7 +26,7 @@ public class SuperAdminDao {
 		
 		psmt= connection.prepareStatement(insert_query);
 		
-		if(psmt !=null)
+		if(psmt != null)
 		{
 			psmt.setString(1, superadmin.getName());
 			psmt.setString(2, superadmin.getEmail());
@@ -87,5 +87,7 @@ public class SuperAdminDao {
 		
 		return superadmin;
 	}
+
+
 
 }

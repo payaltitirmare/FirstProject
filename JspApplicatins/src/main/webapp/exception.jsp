@@ -15,5 +15,7 @@
 
 <a href="NewForm.jsp"><img  alt="home icon" src="homeicon.jpeg" height=50px; width=100px/> </a>
 
+<%=exception %>
+
 </body>
 </html>

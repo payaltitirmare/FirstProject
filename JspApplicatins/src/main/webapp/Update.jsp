@@ -15,7 +15,7 @@
 
 System.out.println("id inside the update.jsp is :"+id);
 
- OperationDao op= new OperationDao();
+ OperationDao op = new OperationDao();
  Connection conn = OperationDao.getConnection();
 
 Statement statement = conn.createStatement();

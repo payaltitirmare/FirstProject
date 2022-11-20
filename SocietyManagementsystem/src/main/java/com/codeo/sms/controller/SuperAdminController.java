@@ -22,8 +22,8 @@ public class SuperAdminController extends HttpServlet {
 	
 	// Servlet class (req , res )--> ( object creation of entity ==> initialize the
 	// object ==> call persistence logic
-
-	SuperAdminDao sadao = null;
+/*
+	
 
 	private static final long serialVersionUID = 1L;
 	private String host = null;
@@ -42,7 +42,8 @@ public class SuperAdminController extends HttpServlet {
 		pass = context.getInitParameter("pass");
 
 	}
-
+*/
+	SuperAdminDao sadao = null;
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
@@ -56,7 +57,7 @@ public class SuperAdminController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
+/*
 		// Email Functionality:
 		String message = "Hey " + name + " you have registered successfully";
 		String subject = "Mailing you for successful registration Mr/Mrs. " + name;
@@ -72,7 +73,7 @@ public class SuperAdminController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+*/
 		// persistence logic
 
 		SuperAdmin superadmin = new SuperAdmin(name, email, password);
@@ -83,18 +84,25 @@ public class SuperAdminController extends HttpServlet {
 
 		try {
 			result = sadao.insertsuperadmin(superadmin);
-
-			if (result) {
-				pw.println("<h1 style='color:green';>data is inserted</h1>");
-			} else {
-				pw.println("issue in data");
+			
+			if(result)
+			{
+				pw.println("<h1 color:red>data is inserted</h1>");
+				
+			}
+			
+			else
+			{
+				pw.println("<h1>data is not inserted</h1>");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+	
+		
 	}
+	
+	
 
 	// whenever the client sends the request it goes to the controller(servlet)
 	// controllar call the view by sending the model object
