@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
       <%@page import="java.sql.*" %>
     <%@page import="com.codeo.mp.connection.DbUtil" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
 <!DOCTYPE html>
 <html>
@@ -54,28 +55,27 @@
   <div class="main-panel">
         <div class="main-content">
           <div class="content-wrapper">
-     <% 
-  String id = request.getParameter("id");
-  Connection con = null;
-  Statement statement  = null;	
-  ResultSet resultset = null;                        		  
-											
-	%>
-         	
-<section id="hoverable-rows">
+     
+     <div class="container text-left">
+
+				<a href="<%=request.getContextPath()%>/new" class="btn btn-success">Add
+					New User</a>
+			</div>
+     
+<section id="shopping-cart">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-            
-                   <div class="card-header">
-                    <h4 class="card-title"><b>Users List</b> </h4>
-                  </div>
-                   
+                <div class="card-header">
+                    <h4 class="card-title"> <b>Users List </b></h4>
+                </div>
                 <div class="card-body">
                     <div class="card-block">
-                        <table class="table table-hover">
+                    
+                        <table class="table table-responsive-md text-center " >
                             <thead>
-                                <tr>
+                             <tr>
+                              <tr>
                                     <th>Sr<br>No</th>
                                     <th>Name</th>
                                     <th>Mobile No</th>
@@ -86,36 +86,27 @@
                                       
                                 </tr>
                             </thead>
-                            <tbody>
-                            
-                               <%
-                            String select_query="select * from user_registration ";
-                            con= DbUtil.getconnection();
-                          statement = con.createStatement();
-                          resultset = statement.executeQuery(select_query);
-                            while(resultset.next()) {
-                            %>
-                                <tr>
-                                    <td><%=resultset.getInt(1) %></td>
-                                    <td><%=resultset.getString(2) %></td>
-                                    <td><%=resultset.getString(3) %></td>
-                                    <td><%=resultset.getString(4) %></td>
-                                     <td><%=resultset.getString(5) %></td>
-                                      <td><%=resultset.getString(6) %></td>
-                                    
-                          <td><a  href="#?id=<%=resultset.getString(1) %>"><i class="ft-trash font-medium-3 red"></i></a> 
+  
+                             <!--   for (Todo todo: todos) {  -->
+					<c:forEach var="user" items="${listUser}">
+
+						<tr>
+							<td><c:out value="${user.id}" /></td>
+							<td><c:out value="${user.uName}" /></td>
+							<td><c:out value="${user.uMobileno}" /></td>
+							<td><c:out value="${user.uAddress}" /></td>
+							<td><c:out value="${user.uEmail}" /></td>
+							<td><c:out value="${user.uPassword}" /></td>
+							  
+                             <td><a  href="edit?id=<c:out value='${user.id}' />"><i class="ft-trash font-medium-3 red"></i></a> ||
                           
-                               <!--   <td> <a  href="EditCategory.jsp?id=<%=resultset.getString(1) %>"><i class="ft-edit orange"></i></a> </td> -->
-                                  <a  href="#?id=<%=resultset.getString(1) %>"><i class="ft-edit orange"></i></a> </td>
-                               
-                                <tr>
-                                
-                                <% 
-                                }
-                            
-                              %>
-                              
-                            </tbody>
+                                 <a  href="delete?id=<c:out value='${user.id}' />"><i class="ft-edit orange"></i></a> </td>
+                                  </tr>
+                                  </c:forEach>
+                                 <tr>
+                 <td><button class="btn btn-success btn-raised">Continue</button> </td>
+                                </tr>
+                           
                         </table>
                     </div>
                 </div>
@@ -123,6 +114,8 @@
         </div>
     </div>
 </section>
+ 
+
 
 </div></div></div></div>
 

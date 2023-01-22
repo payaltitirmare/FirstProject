@@ -1,9 +1,21 @@
 package com.codeo.mp.Dao;
 
-import com.codeo.mp.entity.UserData;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.codeo.mp.entity.User;
 
 public interface UserDAO {
 
-	public boolean addData(UserData userdata);
+	public List<User> selectAllUsers();
+
+	public void insertUser(User user);
+
+	public boolean deleteUser(int id) throws SQLException;
+
+	public User editUser(int id);
+
+	public boolean updateUser(User user);
+	
 	
 }

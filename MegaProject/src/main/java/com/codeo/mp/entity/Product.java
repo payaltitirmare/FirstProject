@@ -1,21 +1,19 @@
 package com.codeo.mp.entity;
 
-import java.io.PrintWriter;
-
 public class Product {
 	
-	String id = null;
-	String prod_name = null;
-	String prod_description = null;
-	String prod_price = null;
-	String prod_discount = null;
-	String prod_quantity = null;
-	String prod_imageName = null;
+	private Integer id = null;
+	private String prod_name = null;
+	private String prod_description = null;
+	private String prod_price = null;
+	private String prod_discount = null;
+	private String prod_quantity = null;
+	private String prod_imageName = null;
 	
 	public Product(String id, String prod_name, String prod_description, String prod_price, String prod_discount,
 			String prod_quantity, String prod_imageName) {
 		super();
-		this.id = id;
+	
 		this.prod_name = prod_name;
 		this.prod_description = prod_description;
 		this.prod_price = prod_price;
@@ -35,10 +33,8 @@ public class Product {
 		this.prod_imageName = prod_imageName;
 	}
   
-
-	
 	public Product() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public String getProd_name() {
@@ -87,6 +83,21 @@ public class Product {
 
 	public void setProd_imageName(String prod_imageName) {
 		this.prod_imageName = prod_imageName;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", prod_name=" + prod_name + ", prod_description=" + prod_description
+				+ ", prod_price=" + prod_price + ", prod_discount=" + prod_discount + ", prod_quantity=" + prod_quantity
+				+ ", prod_imageName=" + prod_imageName + "]";
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	

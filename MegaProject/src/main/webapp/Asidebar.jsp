@@ -31,9 +31,7 @@
                       
                        <li><a href="RegistrationForm.jsp" class="menu-item">Registration form</a>
                       </li>
-                       <li><a href="UserList.jsp" class="menu-item">View User</a>
-                      </li>
-                      <li><a href="invoice-page.jsp" class="menu-item">Report</a>
+                      <li><a href="UserList.jsp" class="menu-item">Report</a>
                       </li>
                     </ul>
                     

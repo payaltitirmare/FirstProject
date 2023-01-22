@@ -15,6 +15,27 @@
 </head>
 <body>
 
+  <%
+        String email=(String)session.getAttribute("email");
+        
+        //redirect user to home page if already logged in
+        if(email!=null) {
+            response.sendRedirect("index.jsp");
+        }
+ 
+        String status=request.getParameter("status");
+        
+        if(status!=null){
+        	
+        	if(status.equals("false")){
+        		   out.print("Incorrect login details!");	           		
+        	}
+        	else{
+        		out.print("Some error occurred!");
+        	}
+        }
+        %>
+
 	<div class="main" >
 
 		<!-- Sing in  Form -->
@@ -26,7 +47,7 @@
            <div class="signin-image">
 					<div class="signin-form" >
 						<h2 class="form-title">Online Eletrical Shopee</h2>
-						<form method="get" action="" class="register-form"	id="login-form" >
+						<form method="post" action="Logincont" class="register-form"	id="login-form" >
 							<div class="form-group">
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input

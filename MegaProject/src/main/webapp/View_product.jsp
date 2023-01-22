@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="java.sql.*" %>
+  <%@page import="java.sql.*" %>
+     <%@page import="java.util.List" %>
      <%@page import="com.codeo.mp.connection.DbUtil" %>
-    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@page import="com.codeo.mp.entity.Product" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,12 +47,12 @@
   <div class="main-panel">
         <div class="main-content">
           <div class="content-wrapper">
-       
   
   <div class="mb-3"> 
              <a href="Add-product.jsp" class="btn btn-raised gradient-crystal-clear white"><i class="fa fa-plus " aria-hidden="true"></i> Add Product </a> 
              
          </div>
+     
      
 <section id="shopping-cart">
     <div class="row">
@@ -75,38 +77,38 @@
                                     
                                 </tr>
                             </thead>
-                            
-          <%
+                          <%
           
-          String id = request.getParameter("id");
-          
-          String select_product ="select * from product_operation where prod_id="+id;
-          Connection con = DbUtil.getconnection();
-          
-          Statement stmt = con.createStatement();
-          
-         ResultSet rs = stmt.executeQuery(select_product);
+                          String id = request.getParameter("id");
+                          
+                          String select_product ="select * from product_operation ";
+                          Connection con = DbUtil.getconnection();
+                          
+                          Statement stmt = con.createStatement();
+                          
+                         ResultSet rs = stmt.executeQuery(select_product);
+                         
+                         while(rs.next())
+                         {
+                          
+                          %>                
+                                                <tr>
+                                                   <td> <%= rs.getInt(1) %></td>
+                                                    <td> <%= rs.getString(2) %></td>
+                                                    <td> <%= rs.getString(3) %></td>
+                                                    <td> <%= rs.getString(4) %></td>
+                                                    <td> <%=rs.getString(5) %> </td>
+                                                    <td> <%= rs.getString(6) %></td>
+                                                    
+                                                  <td> <a href="Productoperation?action=DELETE&id=<%=rs.getString(1)%>"><i class="ft-trash font-medium-3 red"></i> </a></td>
+                                                  
+                                                 <td><a href="Productoperation?action=EDIT&id=<%=rs.getString(1)%> %>" ><i class="ft-edit orange"></i></a> </td>
+                                                </tr>
+                                              <%
+                                                 }
+                         
+                                              %>
          
-         while(rs.next())
-         {
-          
-          %>                
-                                <tr>
-                                   <td> <%= rs.getInt(1) %></td>
-                                    <td> <%= rs.getString(2) %></td>
-                                    <td> <%= rs.getString(3) %></td>
-                                    <td> <%= rs.getString(4) %></td>
-                                    <td> <%=rs.getString(5) %> </td>
-                                    <td> <%= rs.getString(6) %></td>
-                                    
-                                  <td> <a href="delete.jsp?id=<%=rs.getString(1)%>"><i class="ft-trash font-medium-3 red"></i> </a></td>
-                                  
-                                 <td><a href="edit.jsp?id=<%=rs.getString(1) %>" ><i class="ft-edit orange"></i></a> </td>
-                                </tr>
-                              <%
-                                 }
-         
-                              %>
                         </table>
                     </div>
                 </div>
@@ -114,8 +116,7 @@
         </div>
     </div>
 </section>
-  
-  
+ 
  </div>
 </div>
 </div>

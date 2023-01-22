@@ -29,7 +29,7 @@ public class AddNewBanners extends HttpServlet {
 		       String status=request.getParameter("status");
 		       
 		       Part file=request.getPart("Banner_img");
-		       String imageFileName=file.getSubmittedFileName();
+		       String imageFileName=file.getName();          //getSubmittedFileName();
 		       System.out.println(imageFileName);
 		      
 		       String uploadPath ="D:/java program/MegaProject/src/main/webapp/app-assets/img/"+imageFileName;

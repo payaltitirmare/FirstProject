@@ -86,6 +86,7 @@ private String List_Category = "select * from add_category"	;
 	return list;
 	
 	}
+	
 	public boolean editCategory(Category category) {
 		
 		return false;

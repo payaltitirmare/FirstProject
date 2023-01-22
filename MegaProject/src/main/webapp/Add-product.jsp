@@ -68,27 +68,32 @@
 
 								<div class="form-group">
 									<label for="eventRegInput1">Enter Product Name </label>
-									<input type="text" id="eventRegInput1" class="form-control"  name="p_name">
+									<input type="text" id="eventRegInput1" class="form-control"  name="p_name"  />
 								</div>
 								
 								<div class="form-group">
 									<label for="eventRegInput1">Enter Product description </label>
-									<textarea id="donationinput7" rows="5" class="form-control square" name="p_desc" ></textarea>
+									<textarea id="donationinput7" rows="5" class="form-control square" name="p_desc" /></textarea>
 								</div>
 								
 								<div class="form-group">
 									<label >Enter Product Price </label>
-								    <input type="text" class="form-control"  name="p_price">
+								    <input type="text" class="form-control"  name="p_price"  />
 								</div>
 								
 								<div class="form-group">
 									<label >Enter Product Discount </label>
-								    <input type="text" class="form-control"  name="p_discount">
+								    <input type="text" class="form-control"  name="p_discount" />
+								</div>
+								
+								<div class="form-group">
+									<label >product id</label>
+								    <input type="hidden" class="form-control"  name="id" />
 								</div>
 								
 								<div class="form-group">
 									<label >Enter Product Quntity </label>
-								    <input type="text"  class="form-control"  name="p_quntity">
+								    <input type="text"  class="form-control"  name="p_quntity" />
 								</div>
 								
 								<%			 CategoryDao categorydao = new CategoryDao();		
