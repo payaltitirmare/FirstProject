@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="zxx">
-
 <%@page import="java.util.*" %>
 <%@page import="com.codeo.shop.entity.Product" %>
 <%@page import="com.codeo.shop.entity.Category" %>
 <%@page import="com.codeo.shop.Dao.CategoryDao" %>
-<%@page import="com.codeo.shop.Dao.ProductDao" %>
-
+<%@page import="com.codeo.shop.Dao.ProductDaoImp" %>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Ogani Template">
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ONLINE ELECTRICAL SHOPEE</title>
+    <title>Ogani | Template</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -37,46 +35,45 @@
 
    	<jsp:include page="header.html" />
 
-
+     <%     //out.println(cat);
+    		             CategoryDao categorydao = new CategoryDao(); 
+                         List<Category> clist = categorydao.getCategoryList();
+                            
+                            ProductDaoImp productdao = new ProductDaoImp();
+                          //  List<Product> prodlist= productdao.getAllProducts();
+        %>
+               
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
+                <div class="col-lg-3" >
+                    <div class="hero__categories" >
+                        <div class="hero__categories__all"  style="background-color: #87CEEB">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
-                        </div>
+                           <span><a href="shop-grid.jsp?category=all"  style= " color:white" >All Categories </a> </span>
+                           </div>
                         <ul>
-                            <li><a href="#">LED & LIGHING</a></li>
-                            <li><a href="#">FANS</a></li>
-                            <li><a href="#">CABLES & WIRE </a></li>
-                            <li><a href="#">SWITCHES</a></li>
-                            <li><a href="#">PROTECTION DEVICES</a></li>
-                            <li><a href="#">CONSUMABLES</a></li>
-                            <li><a href="#">APPLIANCES</a></li>
-                            <li><a href="#">TOOLS & ELEC HARDWARE</a></li>
-                            <li><a href="#">METERS</a></li>
-                            <li><a href="#">WATERPROOF DEVICES</a></li>
-                        </ul>
+                           
+                             <%  for(Category c : clist) {  %>
+                        <li><a href="shop-grid.jsp?category=<%= c.getId() %>" onMouseOver="this.style.color='red'"   onMouseOut="this.style.color='black'"> <%= c.getCat_title() %> </a></li> 
+                       <%  }  %> 
+                       
+                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
+                                
                                 <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                                <button type="submit" class="site-btn" style="background-color: #87CEEB">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
+                            <div class="hero__search__phone__icon" >
+                                <i class="fa fa-phone" ></i>
                             </div>
                             <div class="hero__search__phone__text">
                                 <h5>+65 11.188.888</h5>
@@ -108,26 +105,36 @@
     </section>
     <!-- Breadcrumb Section End -->
 
+      <%  //working here start
+        
+      String cat = request.getParameter("category");
+            List<Product> prodlist = null;
+                            
+                       if(cat==null||cat.trim().equals("all"))
+                        {
+                       prodlist = productdao.getAllProducts();
+                        }
+                       else {
+                       	   int id =Integer.parseInt(cat.trim());
+                          prodlist = productdao.getAllProductsById(id);
+                    }   //working here end 
+         %>
+     
     <!-- Product Section Begin -->
     <section class="product spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
                     <div class="sidebar">
-                        <div class="sidebar__item">
-                            <h4>Department</h4>
+                        <div class="sidebar__item" >
+                            <h4 >All Category</h4>
                            <ul>
-                            <li><a href="#">LED & LIGHING</a></li>
-                            <li><a href="#">FANS</a></li>
-                            <li><a href="#">CABLES & WIRE </a></li>
-                            <li><a href="#">SWITCHES</a></li>
-                            <li><a href="#">PROTECTION DEVICES</a></li>
-                            <li><a href="#">CONSUMABLES</a></li>
-                            <li><a href="#">APPLIANCES</a></li>
-                            <li><a href="#">TOOLS & ELEC HARDWARE</a></li>
-                            <li><a href="#">METERS</a></li>
-                            <li><a href="#">WATERPROOF DEVICES</a></li>
-                        </ul>
+                            
+                              <%  for(Category c : clist) {  %>
+                        <li><a href="shop-grid.jsp?category=<%= c.getId() %>" onMouseOver="this.style.color='red'"   onMouseOut="this.style.color='green'"> <%= c.getCat_title() %> </a></li> 
+                       <%  }  %> 
+                       
+                             </ul>
                         </div>
                         <div class="sidebar__item">
                             <h4>Price</h4>
@@ -216,6 +223,10 @@
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
+                                
+                                
+                                
+                                
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item">
                                         <a href="#" class="latest-product__item">
@@ -279,176 +290,39 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-9 col-md-7">
+                </div>    
+                                     
+         
+                       <div class="col-lg-9 col-md-7">
                     <div class="product__discount">
-                        <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
-                        </div>
-                        <div class="row">
-                            <div class="product__discount__slider owl-carousel">
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-1.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-2.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Vegetables</span>
-                                            <h5><a href="#">Vegetables’package</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-3.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Mixed Fruitss</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-4.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-5.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="img/product/discount/pd-6.jpg">
-                                            <div class="product__discount__percent">-20%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Dried Fruit</span>
-                                            <h5><a href="#">Raisin’n’nuts</a></h5>
-                                            <div class="product__item__price">$30.00 <span>$36.00</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="filter__item">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>16</span> Products found</h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <%  
-                    ProductDao productdao = new ProductDao();
-                   List<Product> list = productdao.getAllProducts();
-                    
-                         for(Product product :list) {      		
-                    %>
-                    
-                    <div class="row">
+                     <div class="row">
+                       <%  for(Product product :prodlist)  {  %>
+                     
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                                    <ul class="product__item__pic__hover">
+                               <div class="featured__item__pic set-bg" data-setbg="img/latest-product/<%=product.getProd_imageName() %>" style="background-image: url(&quot;img/latest-product/<%=product.getProd_imageName() %>&quot;);">
+                                    
+                               <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
                                         <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                                     </ul>
-                                </div>
+                                 </div>
+                                
                                 <div class="product__item__text">
-                                    <h6><a href="#">Crab Pool Security</a></h6>
-                                    <h5>$30.00</h5>
+                                    <h5><a href="#" style="color:black"><%=product.getProd_name() %></a></h5>
+                                 <!--    <h5> <span>&#8377; </span><%=product.getProd_price() %> </h5> <br>  -->
+                                     <button type="button" class="btn btn-light"> <h5>&#8377;<%=product.getPriceAfterDiscount() %>/- <span style="font-size:15px;font-style:italic;text-decoration:line-through"> <%=product.getProd_price() %> , <%=product.getProd_discount() %> off </span> </h5></button>
+                         
+             
+                            <a href="#" class="primary-btn" style="background-color: #87CEEB"  onMouseOver="this.style.backgroundColor='#808080'"  onMouseOut="this.style.backgroundColor='#87CEEB'"> <i class="fa fa-shopping-cart"></i>ADD TO CARD</a>
+                          
                                 </div>
                             </div>
-                        </div>
-                       <% } %>
-                       
-                    </div>
+                        </div> 
+                        <%  } %>
+                     </div></div>   
+        
                     <div class="product__pagination">
                         <a href="#">1</a>
                         <a href="#">2</a>

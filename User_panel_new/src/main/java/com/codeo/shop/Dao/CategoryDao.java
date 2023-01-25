@@ -32,12 +32,13 @@ private String List_Category = "select * from add_category"	;
 			rs = stmt.executeQuery(List_Category);
 			
 			while(rs.next())
-			{
-				//int id = rs.getInt("id");
+			{  //catId, catTitle, catDescriptor
+				int Id = rs.getInt("catId");
+				
 				String cat_title=rs.getString("catTitle");
 				String cat_description= rs.getString("catDescriptor");
 				
-				list.add(new Category(  cat_title,  cat_description)) ;
+				list.add(new Category( Id, cat_title,  cat_description )) ;
 				
 				//System.out.println( cat_title+" "+ cat_description);
 		
@@ -52,8 +53,16 @@ private String List_Category = "select * from add_category"	;
 	
 	}
 	
+	
+	
 	public boolean editCategory(Category category) {
 		
+		return false;
+	}
+
+	
+	public boolean addcategory(Category category) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 }
