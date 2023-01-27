@@ -16,5 +16,9 @@ public interface ProductDao {
 
 	public Product editProd(int id);
 	
+	public List getAllProductsById(int id);
+	
+	public List  getAllProductsForDetails(int id);
+	
 	
 }

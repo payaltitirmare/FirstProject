@@ -1,4 +1,4 @@
-package com.codeo.shop.Dao;
+ package com.codeo.shop.Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import com.codeo.shop.entity.Product;
 public class ProductDaoImp implements ProductDao {
 
 	
-	private static final String insert_Product ="insert into product_operation(prod_name, prod_description, prod_price, prod_discount, prod_quantity,prod_imageName) values(?,?,?,?,?,?)";
+	private static final String insert_Product ="insert into product_operation(prod_name, prod_description, prod_price, prod_discount, prod_quantity,prod_imageName,cid) values(?,?,?,?,?,?,?)";
 	private static final String selct_product ="SELECT * FROM product_operation ";
     private static final String Edit_product ="select prod_id,prod_name,prod_description,prod_price,prod_discount,prod_quantity,prod_imageName from product_operation where prod_id=?";
     //private static final String Update_product = "UPDATE product_operation SET name = '"+product.getProd_name()+"', "+ "description = '"+product.getProd_description()+"',  price = '"+product.getProd_price()+"', discount = '"+product.getProd_discount()+"',quantity = '"+product.getProd_quantity()+"',image = '"+product.getProd_imageName()+"' where id="+product.getId();
@@ -41,7 +41,8 @@ public class ProductDaoImp implements ProductDao {
 					psmt.setString(4, product.getProd_discount());
 					psmt.setString(5, product.getProd_quantity());
 					psmt.setString(6, product.getProd_imageName());
-				}
+					psmt.setInt(7, product.getCid());
+						}
 				System.out.println(psmt);
 			    int result = psmt.executeUpdate(); 
 				System.out.println("result is "+result);
@@ -142,7 +143,7 @@ public class ProductDaoImp implements ProductDao {
 		}
 		return product;
 	   }
-	
+	//for sorting of categories 
 	 
 	 public List <Product> getAllProductsById(int id)
 			{
@@ -150,6 +151,42 @@ public class ProductDaoImp implements ProductDao {
 				Product product = null;
 		Connection con = ConnectionProvider.getconnection();
 		String  getproductById = "select * from product_operation where cid ="+id;
+	
+		try {
+			Statement statement = con.createStatement();
+			ResultSet resultset =null;
+			
+			resultset =statement.executeQuery(getproductById);
+			
+			//prod_id, prod_name, prod_description, prod_price, prod_discount, prod_quantity, prod_imageName
+			while(resultset.next())
+			{
+				product = new Product();
+				product.setId(resultset.getInt("prod_id"));
+				product.setProd_name(resultset.getString("prod_name"));
+				product.setProd_description(resultset.getString("prod_description"));
+				product.setProd_price(resultset.getString("prod_price"));
+				product.setProd_discount(resultset.getString("prod_discount"));
+				product.setProd_imageName(resultset.getString("prod_imageName"));
+			
+				list.add(product);
+			}
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+			return list;
+				
+			}
+	 
+	 //for sorting of product image details 
+	 
+	 public List <Product> getAllProductsForDetails(int id)
+			{
+				List<Product> list = new ArrayList<Product>();
+				Product product = null;
+		Connection con = ConnectionProvider.getconnection();
+		String  getproductById = "select * from product_operation where prod_id ="+id;
 	
 		try {
 			Statement statement = con.createStatement();

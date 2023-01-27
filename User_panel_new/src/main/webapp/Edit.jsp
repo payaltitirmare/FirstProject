@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@page import="com.codeo.shop.entity.User" %>
-    <%@page import="java.sql.*" %>
-      <%@page import="com.codeo.shop.dbutil.ConnectionProvider" %>
-      <%@page import="com.codeo.shop.controller.RegistrationServlet" %>
-       <%@page import="com.codeo.shop.Dao.UserDaoImpl" %>
-       <%@page import="com.codeo.shop.Dao.UserDAO" %>
-      
+	pageEncoding="ISO-8859-1"%>
+<%@page import="com.codeo.shop.entity.User"%>
+<%@page import="java.sql.*"%>
+<%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
+<%@page import="com.codeo.shop.controller.RegistrationServlet"%>
+<%@page import="com.codeo.shop.Dao.UserDaoImpl"%>
+<%@page import="com.codeo.shop.Dao.UserDAO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <body>
 
 
-<%
+	<%
 
  request.getAttribute("user");
 

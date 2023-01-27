@@ -13,9 +13,9 @@
 <!-- Main css -->
 <link rel="stylesheet" href="AdminPanel/css/style.css">
 </head>
-  <body>
+<body>
 
-     <%=
+	<%=
      //  String email=(String)session.getAttribute("email");
          //redirect user to home page if already logged in
       //  if(email!=null) {
@@ -34,22 +34,20 @@
         
         %>
 
-	<div class="main" >
-       <!-- Sing in  Form -->
-		   <section class="sign-in" >
-			  <div class="container">
-				<div class="signin-content">
-					
-					</div>
-           <div class="signin-image">
-					<div class="signin-form" >
+	<div class="main">
+		<!-- Sing in  Form -->
+		<section class="sign-in">
+			<div class="container">
+				<div class="signin-content"></div>
+				<div class="signin-image">
+					<div class="signin-form">
 						<h2 class="form-title">Online Eletrical Shopee</h2>
-						<form method="post" action="Logincont" class="register-form"	id="login-form" >
+						<form method="post" action="Logincont" class="register-form"
+							id="login-form">
 							<div class="form-group">
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="Email" id="Email"
-									placeholder="Email" />
+									type="text" name="Email" id="Email" placeholder="Email" />
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
@@ -61,12 +59,12 @@
 									class="agree-term" /> <label for="remember-me"
 									class="label-agree-term"><span><span></span></span>Remember
 									me</label>
-									
+
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signin" id="signin"
-									class="form-submit" value="Log in" />
-						<a href="RegistrationForm.jsp" class="signup-image-link">Register</a>
+									class="form-submit" value="Log in" /> <a
+									href="RegistrationForm.jsp" class="signup-image-link">Register</a>
 							</div>
 						</form>
 						<div class="social-login">
@@ -81,7 +79,7 @@
 							</ul>
 						</div>
 					</div>
-			</div>
+				</div>
 			</div>
 		</section>
 	</div>

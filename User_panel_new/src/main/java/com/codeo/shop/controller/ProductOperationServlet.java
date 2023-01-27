@@ -1,4 +1,5 @@
- package com.codeo.shop.controller;
+package com.codeo.shop.controller;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,10 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
 import com.codeo.shop.Dao.ProductDao;
 import com.codeo.shop.Dao.ProductDaoImp;
-import com.codeo.shop.entity.Category;
 import com.codeo.shop.entity.Product;
 
 @WebServlet("/Productoperation")
@@ -32,20 +31,15 @@ public class ProductOperationServlet extends HttpServlet {
 	ProductDao productdao = null;
 	Product product= null;
 	RequestDispatcher dispatcher = null;
-	String category = null;
+	int cid=0;
+	
 	public  ProductOperationServlet()
 	{
 		productdao = new ProductDaoImp();
-		
-        Category cat= new Category();
-		
-		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-		category = request.getParameter("category");
-		System.out.println("category is "+category);
 		
 		prod_name = request.getParameter("p_name");
 		prod_description = request.getParameter("p_desc");
@@ -53,11 +47,15 @@ public class ProductOperationServlet extends HttpServlet {
 		prod_discount = request.getParameter("p_discount");
 		prod_quantity = request.getParameter("p_quntity");
 		String id = request.getParameter("id");
+		cid = Integer.parseInt(request.getParameter("cid"));
 		pw = response.getWriter();
 		
 		Part file = request.getPart("p_image");
 		prod_imageName = file.getSubmittedFileName(); 
-		String uploadFile ="C:/Users/cw/git/FirstProject/MegaProject/src/main/webapp/app-assets/img"+prod_imageName;
+		//String uploadFile ="C:/Users/cw/git/FirstProject/MegaProject/src/main/webapp/app-assets/img"+prod_imageName;
+		
+		String uploadFile = "C:/Users/cw/git/FirstProject/User_panel_new/src/main/webapp/img/latest-product/"+prod_imageName;
+		//String uploadFile  ="D:/java program/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/User_panel_new/img/latest-product/"+prod_imageName;   
 		
 		//for writing into file 
 		FileOutputStream fos = new FileOutputStream(uploadFile);
@@ -65,12 +63,17 @@ public class ProductOperationServlet extends HttpServlet {
 		InputStream is = file.getInputStream();
         System.out.println("image name is:"+ prod_imageName);
 		
+        String path = request.getRealPath("img")+File.separator+"latest-product"+File.separator+file.getSubmittedFileName(); 
+        
+        System.out.println("this is path :"+path);
+        
 		byte[] data = new byte[is.available()] ;
 	     is.read();
 		fos.write(data);
 		fos.close();
-		System.out.println(uploadFile);
-	 product = new Product(prod_name ,prod_description, prod_price, prod_discount, prod_quantity, prod_imageName,category);
+		System.out.println("this is uploadfile :"+uploadFile);
+		
+	   product = new Product(prod_name ,prod_description, prod_price, prod_discount, prod_quantity, prod_imageName,cid);
 		
 		  if(id.isEmpty() || id == null)
 		 {
@@ -90,17 +93,19 @@ public class ProductOperationServlet extends HttpServlet {
 	           }
 		 }
 		    listProduct(request, response);
+		    
+		    doGet(request, response);
 		 }
   
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		  String action = request.getParameter("action");
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String action = request.getParameter("action");
 				
-
-					switch(action) {
-					
-					
+             switch(action) {
 					case "EDIT":
 						getSingleProduct(request, response);
 						break;
@@ -112,14 +117,10 @@ public class ProductOperationServlet extends HttpServlet {
 					default:
 						listProduct(request, response);
 						break;
-					} 
-					}
+					} 	}
 			
-	
-	
 	private void getSingleProduct(HttpServletRequest request, HttpServletResponse response) {
-		
-		
+		  
 	}
 
 	private void deleteProdct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

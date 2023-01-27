@@ -1,34 +1,38 @@
 <html>
 
 <body data-col="2-columns" class=" 2-columns ">
-  
+
 	<!-- Navbar (Header) Starts-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-faded">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-left">
+				<button type="button" data-toggle="collapse"
+					class="navbar-toggle d-lg-none float-left">
 					<span class="sr-only">Toggle navigation</span><span
 						class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				
+
 			</div>
 			<div class="navbar-container">
 				<div id="navbarSupportedContent" class="collapse navbar-collapse">
 					<ul class="navbar-nav">
-		
+
 						<li class="dropdown nav-item"><a id="dropdownBasic3" href="#"
 							data-toggle="dropdown"
 							class="nav-link position-relative dropdown-toggle"><i
 								class="ft-flag font-medium-3 blue-grey darken-4"></i><span
 								class="selected-language d-none"></span></a>
 							<div class="dropdown-menu dropdown-menu-right">
-								<a href="javascript:;" class="dropdown-item py-1">
-								<img
-									src="app-assets/img/flags/us.png" class="langimg" /><span>	English</span></a><a href="javascript:;" class="dropdown-item py-1"><img
-									src="app-assets/img/flags/es.png" class="langimg" /><span>	Spanish</span></a><a href="javascript:;" class="dropdown-item py-1"><img
-									src="app-assets/img/flags/br.png" class="langimg" /><span>	Portuguese</span></a><a href="javascript:;" class="dropdown-item"><img
-									src="app-assets/img/flags/de.png" class="langimg" /><span>	French</span></a>
+								<a href="javascript:;" class="dropdown-item py-1"> <img
+									src="app-assets/img/flags/us.png" class="langimg" /><span>
+										English</span></a><a href="javascript:;" class="dropdown-item py-1"><img
+									src="app-assets/img/flags/es.png" class="langimg" /><span>
+										Spanish</span></a><a href="javascript:;" class="dropdown-item py-1"><img
+									src="app-assets/img/flags/br.png" class="langimg" /><span>
+										Portuguese</span></a><a href="javascript:;" class="dropdown-item"><img
+									src="app-assets/img/flags/de.png" class="langimg" /><span>
+										French</span></a>
 							</div></li>
 						<li class="dropdown nav-item"><a id="dropdownBasic2" href="#"
 							data-toggle="dropdown"
@@ -44,24 +48,31 @@
 										class="ft-bell info float-left d-block font-large-1 mt-1 mr-2"></i><span
 										class="noti-wrapper"><span
 											class="noti-title line-height-1 d-block text-bold-400 info">New
-												Order Received</span><span class="noti-text">Lorem ipsum dolor sit ametitaque in, et!</span></span></a><a
+												Order Received</span><span class="noti-text">Lorem ipsum
+												dolor sit ametitaque in, et!</span></span></a><a
 										class="dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4"><i
 										class="ft-bell warning float-left d-block font-large-1 mt-1 mr-2"></i><span
 										class="noti-wrapper"><span
 											class="noti-title line-height-1 d-block text-bold-400 warning">New
-												User Registered</span><span class="noti-text">Lorem ipsum dolor sit ametitaque in </span></span></a><a
+												User Registered</span><span class="noti-text">Lorem ipsum
+												dolor sit ametitaque in </span></span></a><a
 										class="dropdown-item noti-container py-3 border-bottom border-bottom-blue-grey border-bottom-lighten-4"><i
 										class="ft-bell danger float-left d-block font-large-1 mt-1 mr-2"></i><span
 										class="noti-wrapper"><span
 											class="noti-title line-height-1 d-block text-bold-400 danger">New
-												Order Received</span><span class="noti-text">Lorem ipsum dolor sit ametest?</span></span></a><a
+												Order Received</span><span class="noti-text">Lorem ipsum
+												dolor sit ametest?</span></span></a><a
 										class="dropdown-item noti-container py-3"><i
 										class="ft-bell success float-left d-block font-large-1 mt-1 mr-2"></i><span
 										class="noti-wrapper"><span
-											class="noti-title line-height-1 d-block text-bold-400 success">New User Registered</span><span class="noti-text">Lorem ipsu dolor sit ametnatus aut.</span></span></a>
+											class="noti-title line-height-1 d-block text-bold-400 success">New
+												User Registered</span><span class="noti-text">Lorem ipsu
+												dolor sit ametnatus aut.</span></span></a>
 								</div>
 								<a
-									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read All Notifications</a></div></li>
+									class="noti-footer primary text-center d-block border-top border-top-blue-grey border-top-lighten-4 text-bold-400 py-1">Read
+									All Notifications</a>
+							</div></li>
 						<li class="dropdown nav-item"><a id="dropdownBasic3" href="#"
 							data-toggle="dropdown"
 							class="nav-link position-relative dropdown-toggle"><i
