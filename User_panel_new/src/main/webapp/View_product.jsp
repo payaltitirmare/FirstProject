@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" %>
 <%@page import="java.sql.*"%>
 <%@page import="java.util.List"%>
 <%@page import="com.codeo.shop.dbutil.ConnectionProvider"%>
-
+<%@page import="com.codeo.shop.entity.Product" %>
 <!--   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> -->
 
 <!DOCTYPE html>
@@ -60,8 +60,7 @@
 	<div class="wrapper nav-collapsed menu-collapsed">
 
 		<%@include file="Asidebar.jsp"%>
-
-		<%@include file="Navbar.jsp"%>
+        <%@include file="Navbar.jsp"%>
 
 		<div class="main-panel">
 			<div class="main-content">
@@ -72,8 +71,7 @@
 							class="btn btn-raised gradient-crystal-clear white"><i
 							class="fa fa-plus " aria-hidden="true"></i> Add Product </a>
 					</div>
-
-					<section id="shopping-cart">
+                    <section id="shopping-cart">
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="card">
@@ -94,37 +92,36 @@
 														<th>Quantity</th>
 														<th>Image</th>
 														<th>Action</th>
-
-													</tr>
+                                                   </tr>
 												</thead>
 												<%
                             String id = request.getParameter("id");
-                           String select_product ="select * from product_operation ";
-                          Connection con = ConnectionProvider.getconnection();
-                            Statement stmt = con.createStatement();
+                         String select_product ="select * from product_operation ";
+                        Connection con = ConnectionProvider.getconnection();
+                           Statement stmt = con.createStatement();
                           ResultSet rs = stmt.executeQuery(select_product);
+                           
                           while(rs.next())
                          {                 
                         	        %>
-												<tr>
-													<td><%= rs.getInt("prod_id") %></td>
+											<td><%= rs.getInt("prod_id") %></td>
 													<td><%= rs.getString("prod_name") %></td>
 													<td><%= rs.getString("prod_description") %></td>
 													<td><%= rs.getString("prod_price") %></td>
 													<td><%=rs.getString("prod_discount") %></td>
 													<td><%= rs.getString("prod_quantity") %></td>
 													<td><%= rs.getString("prod_imageName") %></td>
-
-													<td><a
-														href="Productoperation?action=DELETE&id=<%=rs.getString("prod_id")%>"><i
+                                                   
+												 <td><a	href="Productoperation?action=DELETE&id=<%=rs.getString("prod_id")%>"><i
 															class="ft-trash font-medium-3 red"></i> </a>|| <a
-														href="Productoperation?action=EDIT&id=<%=rs.getString("prod_id")%> %>">
+														href="Productoperation?action=EDIT&id=<%=rs.getString("prod_id")%>">
 															EDIT<i class="ft-edit orange"></i>
 													</a></td>
 												</tr>
-												<%
-                                                 }
-                            %>
+												
+									<%
+                                                }
+                                  %>
 
 											</table>
 										</div>
@@ -133,8 +130,7 @@
 							</div>
 						</div>
 					</section>
-
-				</div>
+               	</div>
 			</div>
 		</div>
 	</div>
@@ -154,11 +150,9 @@
 		type="text/javascript"></script>
 	<script src="app-assets/vendors/js/pace/pace.min.js"
 		type="text/javascript"></script>
-
-	<script src="app-assets/vendors/js/datatable/datatables.min.js"
+   <script src="app-assets/vendors/js/datatable/datatables.min.js"
 		type="text/javascript"></script>
-
-	<script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
+   <script src="app-assets/js/app-sidebar.js" type="text/javascript"></script>
 	<script src="app-assets/js/notification-sidebar.js"
 		type="text/javascript"></script>
 	<script src="app-assets/js/customizer.js" type="text/javascript"></script>

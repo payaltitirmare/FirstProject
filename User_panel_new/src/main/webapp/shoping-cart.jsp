@@ -1,6 +1,10 @@
+  <%@page import="com.codeo.shop.entity.Product" %>
+    <%@page import="java.sql.*"%>
+    <%@page import="java.util.List"%>
+    <%@page import="com.codeo.shop.entity.Cart" %>
 <!DOCTYPE html>
 <html lang="zxx">
-
+ 
 <head>
 <meta charset="UTF-8">
 <meta name="description" content="Ogani Template">
@@ -119,10 +123,15 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td class="shoping__cart__item"><img
-										src="img/cart/cart-1.jpg" alt="">
-										<h5>Vegetable’s Package</h5></td>
-									<td class="shoping__cart__price">$55.00</td>
+		 <%
+            Cart cart = (Cart) session.getAttribute("cart");
+            List<Product> products = cart.getProducts();
+            for (Product product : products) {
+        %>
+									<td class="shoping__cart__item">
+									<img src="img/cart/cart-2.jpg" alt="">
+										<h5><%=product.getProd_name() %></h5></td>
+									<td class="shoping__cart__price"><%=product.getProd_price() %></td>
 									<td class="shoping__cart__quantity">
 										<div class="quantity">
 											<div class="pro-qty">
@@ -130,14 +139,18 @@
 											</div>
 										</div>
 									</td>
-									<td class="shoping__cart__total">$110.00</td>
+									<td class="shoping__cart__total"><%=product.getProd_discount() %></td>
 									<td class="shoping__cart__item__close"><span
 										class="icon_close"></span></td>
 								</tr>
+								
+								<%  } %>
+								<!--  
+								
 								<tr>
 									<td class="shoping__cart__item"><img
 										src="img/cart/cart-2.jpg" alt="">
-										<h5>Fresh Garden Vegetable</h5></td>
+										<h5></h5></td>
 									<td class="shoping__cart__price">$39.00</td>
 									<td class="shoping__cart__quantity">
 										<div class="quantity">
@@ -161,11 +174,12 @@
 												<input type="text" value="1">
 											</div>
 										</div>
-									</td>
+									</td> 
 									<td class="shoping__cart__total">$69.99</td>
 									<td class="shoping__cart__item__close"><span
 										class="icon_close"></span></td>
-								</tr>
+								</tr>  -->
+								
 							</tbody>
 						</table>
 					</div>
@@ -175,8 +189,8 @@
 				<div class="col-lg-12">
 					<div class="shoping__cart__btns">
 						<a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a> <a
-							href="#" class="primary-btn cart-btn cart-btn-right"><span
-							class="icon_loading"></span> Upadate Cart</a>
+							href="#" class="primary-btn cart-btn cart-btn-right">
+							<span class="icon_loading"></span> Upadate Cart</a>
 					</div>
 				</div>
 				<div class="col-lg-6">
@@ -217,7 +231,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-
+<script src="js/cart.js"></script>
 
 </body>
 

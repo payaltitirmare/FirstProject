@@ -214,8 +214,12 @@
 								</label>
 							</div>
 						</div>
+						
+						 
 						<div class="sidebar__item">
+						
 							<div class="latest-product__text">
+							<!--  
 								<h4>Latest Products</h4>
 
 								<div class="latest-product__slider owl-carousel">
@@ -246,6 +250,8 @@
 											</div>
 										</a>
 									</div>
+									
+									
 									<div class="latest-prdouct__slider__item">
 										<a href="#" class="latest-product__item">
 											<div class="latest-product__item__pic">
@@ -272,13 +278,14 @@
 												<span>$30.00</span>
 											</div>
 										</a>
-									</div>
-								</div>
+									</div> 
+								</div>  -->
 							</div>
-						</div>
+						</div> 
 					</div>
 				</div>
 
+      
 
 				<div class="col-lg-9 col-md-7">
 					<div class="product__discount">
@@ -349,7 +356,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
-
+<script src="js/cart.js"></script>
 
 
 </body>

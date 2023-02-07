@@ -29,6 +29,41 @@
 </head>
 
 <body>
+ 
+ <!--  modal start            <h1>Welcome User <%= request.getAttribute("username") %></h1>
+		
+  -->
+
+ <!-- Modal -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="welcomeModalLabel">Welcome</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+        <p>Hello <%= session.getAttribute("username") %>, welcome to your homepage.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#welcomeModal').modal('show');
+  });
+</script>
+ 
+
+<!--  modal end  -->
+ 
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -176,11 +211,9 @@
 								</h5>
 							</button>
 
-							<a href="#" class="primary-btn" style="background-color: #87CEEB"
-								onMouseOver="this.style.backgroundColor='#808080'"
-								onMouseOut="this.style.backgroundColor='#87CEEB'"> <i
-								class="fa fa-shopping-cart"></i>ADD TO CARD
-							</a>
+							<a href="#" class="primary-btn" style="background-color: #87CEEB" onclick="add_to_cart(<%=product.getId()%>,<%=product.getProd_name() %>,<%=product.getPriceAfterDiscount()%>,<%=product.getProd_imageName() %>)" onMouseOver="this.style.backgroundColor='#808080'"
+								onMouseOut="this.style.backgroundColor='#87CEEB'">
+								 <i class="fa fa-shopping-cart"></i>ADD TO CARD </a>
 						</div>
 					</div>
 				</div>
@@ -340,6 +373,7 @@
 	<script src="js/mixitup.min.js"></script>
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/cart.js"></script>
 
 </body>
 

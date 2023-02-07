@@ -24,40 +24,40 @@ public class AddCategory extends HttpServlet {
 	Category  category = null;
 	int Id= 0;
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	pw = response.getWriter();
-		
-		Cat_title = request.getParameter("cattitle");
-		
-	   cat_description = request.getParameter("catdesc");
-
-	   Id = Integer.parseInt(request.getParameter("id"));
-		
-		 category = new Category(Id,Cat_title,cat_description);
-		  
-		 System.out.println("id :"+ Id);
-		 
-		 cd = new CategoryDao();
-		 
-	 	boolean flag = false;
-		
-	 	
-		flag = cd.addcategory(category);
-		System.out.println(flag);
-		if(flag==true)
-		{
-			response.sendRedirect("View_Category.jsp");
-		}
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			pw = response.getWriter();
+	    	Cat_title = request.getParameter("cattitle");
+			 cat_description = request.getParameter("catdesc");
+	       
+			 // Id = Integer.parseInt(request.getParameter("id"));
+			 // System.out.println("id :"+ Id);
+			  System.out.println(Cat_title);
+			  // category = new Category(Id,Cat_title,cat_description);
+			  
+			   category = new Category(Cat_title,cat_description);
+				  
+			   cd = new CategoryDao();
+				 boolean flag = false;
+				
+				flag = cd.addcategory(category);
+				System.out.println(flag);
+				
+				if(flag==true)
+				{
+					response.sendRedirect("View_Category.jsp");
+				}	
+				
 		doGet(request, response);
 	}	
 	
-	
-	}
+		@Override
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			
+			
+		}
+
+      }
 
 	

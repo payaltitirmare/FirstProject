@@ -14,11 +14,19 @@ public interface ProductDao {
 
 	public boolean delete(int id);
 
-	public Product editProd(int id);
+	//public Product editProd(int id);
 	
 	public List getAllProductsById(int id);
 	
 	public List  getAllProductsForDetails(int id);
+
+	public Product getProduct(int prod_id);
+
+	public List<Product> getlist();
+
+	public Product getProductById(int id);
+
+	
 	
 	
 }

@@ -34,7 +34,5 @@ public class Login  extends HttpServlet{
 			pw.println("please enter proper input");
 		}
 		
+	    }
 	}
-	
-	
-}

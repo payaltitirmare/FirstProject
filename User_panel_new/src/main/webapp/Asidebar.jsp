@@ -72,8 +72,7 @@
 
 						</ul></li>
 
-					<li class=" nav-item"><a href="../documentation/index.html"><i
-							class="ft-book"></i><span data-i18n="" class="menu-title">Customer</span></a>
+					<li class=" nav-item"><a href="UserList.jsp"><i class="ft-book"></i><span data-i18n="" class="menu-title">Customer</span></a>
 					</li>
 
 					<li class=" nav-item"><a href="calendar.html"><i

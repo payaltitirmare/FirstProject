@@ -20,6 +20,12 @@ public class Category {
 	}
 
 
+	public Category(String cat_title, String cat_description) {
+		this.Cat_title = cat_title;
+		this.cat_description = cat_description;
+	}
+
+
 	public int getId() {
 		return Id;
 	}

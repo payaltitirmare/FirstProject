@@ -119,7 +119,7 @@
 													<td><a
 														href="DeleteCategory.jsp?id=<%=resultset.getString(1) %>"><i
 															class="ft-trash font-medium-3 red"></i>Delete</a> || <!--   <td> <a  href="EditCategory.jsp?id=<%=resultset.getString(1) %>"><i class="ft-edit orange"></i></a> </td> -->
-														<a href="Addcategory?id=<%=resultset.getString(1) %>"><i
+														<a href="Editcategory?id=<%=resultset.getString(1) %>"><i
 															class="ft-edit orange"></i>Edit</a></td>
 												<tr>
 

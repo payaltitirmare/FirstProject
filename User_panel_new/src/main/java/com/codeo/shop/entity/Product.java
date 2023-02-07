@@ -77,8 +77,8 @@ public class Product {
 		return prod_quantity;
 	}
 
-	public void setProd_quantity(String prod_quantity) {
-		this.prod_quantity = prod_quantity;
+	public void setProd_quantity(String string) {
+		this.prod_quantity = string;
 	}
 
 	public String getProd_imageName() {
@@ -115,11 +115,9 @@ public class Product {
       //int disc = Integer.parseInt(this.getProd_discount());
 	public int getPriceAfterDiscount()
 	{
-		
 		int d= (int)((Integer.parseInt(this.getProd_discount())/100.0)*Integer.parseInt(this.getProd_price()));
 		
 		return Integer.parseInt(this.getProd_price())-d;
 	
 	     }
-
 	}

@@ -94,9 +94,8 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Vegetable’s Package</h2>
-						<div class="breadcrumb__option">
-							<a href="./index.jsp">Home</a> <a href="#">Vegetables</a> <span>Vegetable’s
+					<div class="breadcrumb__option">
+							<a href="./index.jsp">Home</a> <a href="#">Electrical</a> <span>Vegetable’s
 								Package</span>
 						</div>
 					</div>
@@ -106,8 +105,8 @@
 	</section>
 	<!-- Breadcrumb Section End -->
 
-	<%   //java code
-                                 CategoryDao categorydao = new CategoryDao(); 
+	         <%   //java code
+                           CategoryDao categorydao = new CategoryDao(); 
                                 List<Category> clist = categorydao.getCategoryList();
                                 ProductDaoImp productdao = new ProductDaoImp();  
                                 
@@ -124,8 +123,7 @@
                                int id =Integer.parseInt(prod.trim());
                                prodlist = productdao.getAllProductsForDetails(id);
                          } 
-                                
-                                %>
+         %>
 
 
 	<!-- Product Details Section Begin -->
@@ -266,7 +264,7 @@
 	</section>
 	<!-- Product Details Section End -->
 
-	<!-- Related Product Section Begin -->
+	<!-- Related Product Section Begin 
 	<section class="related-product">
 		<div class="container">
 			<div class="row">
@@ -350,9 +348,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>  -->
 		<% } %>
-	</section>
+	 <!--  </section>  -->
 	<!-- Related Product Section End -->
 
 	<jsp:include page="footer.html" />

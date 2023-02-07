@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import com.codeo.shop.Dao.UserDAO;
 import com.codeo.shop.Dao.UserDaoImpl;
 import com.codeo.shop.entity.User;
@@ -26,8 +25,10 @@ public class RegistrationServlet extends HttpServlet {
  PrintWriter pw = null;
  RequestDispatcher dispatcher = null;
  User user = null;
-	UserDAO userDAO = null;
-	public void init()
+ UserDAO userDAO = null;
+ String user_type = null;
+	
+   public void init()
 	{ 
 		userDAO = new UserDaoImpl();
 	}
@@ -36,27 +37,25 @@ public class RegistrationServlet extends HttpServlet {
 		
 		 id = request.getParameter("id");
 		 user_name = request.getParameter("name");
-			user_mobno = request.getParameter("contact");
-			user_adderess = request.getParameter("Address");
-			user_emailid = request.getParameter("email");
-			user_pass = request.getParameter("pass");
-		user = new User(user_name, user_mobno, user_adderess, user_emailid,user_pass);	
-			System.out.println(user_name+" "+user_mobno);
+		 user_mobno = request.getParameter("contact");
+		 user_adderess = request.getParameter("Address");
+		 user_emailid = request.getParameter("email");
+		 user_pass = request.getParameter("pass");
+		 user_type = request.getParameter("user_type");
+		 user = new User(user_name, user_mobno, user_adderess, user_emailid,user_pass,user_type);	
+		 System.out.println(user_name+" "+user_mobno+" "+user_type);
 			
 			if(id.isEmpty() || id==null)
 			{
 				if(userDAO.insertUser(user)) {
-					
-					response.sendRedirect("UserList.jsp");
-				}
+					response.sendRedirect("loginfrom.jsp");
+		}
 			}else {
 				user.setId(Integer.parseInt(request.getParameter("id")));
 				if(userDAO.update(user))
 				{
 					response.sendRedirect("UserList.jsp");
-				}
-			
-			}}
+				} } }
 		
 
 	@Override
@@ -67,25 +66,23 @@ public class RegistrationServlet extends HttpServlet {
           switch(action) {
 			
 			case "EDIT":
-				getSingleProduct(request, response);
+				getSingleUser(request, response);
 				break;
 				
 			case "DELETE":
-				deleteProdct(request, response);
+				deleteUser(request, response);
 				break;
-				
+			
 			default:
 				listProduct(request, response);
 				break;
-			} 
-		
-	}
+			} }
 
 	private void listProduct(HttpServletRequest request, HttpServletResponse response) {
 		
 	}
 
-	private void deleteProdct(HttpServletRequest request, HttpServletResponse response) {
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		if(userDAO.deleteUser(id))
@@ -94,16 +91,16 @@ public class RegistrationServlet extends HttpServlet {
 				response.sendRedirect("UserList.jsp");
 			} catch (IOException e) {
 				e.printStackTrace();
-			}
-		}
-	}
-	private void getSingleProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			} } }
+	
+	private void getSingleUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		User useredit = new User();
-	    useredit =userDAO.edituser(id);
+		//User useredit = new User();
+	    //useredit =userDAO.edituser(id);
 		
-	  request.setAttribute("user", useredit);
+	  //request.setAttribute("user", useredit);
 	  dispatcher = request.getRequestDispatcher("Edit.jsp");
 	  dispatcher.forward(request, response);
+	
 	}
 	}

@@ -8,18 +8,9 @@ public class User {
       private String user_adderess = null;
       private String user_emailid= null;
       private String user_pass=null;
+	  private String  user_type =null;
 	
-	public User(int id, String user_name, String user_mobno, String user_adderess, String user_emailid,
-			String user_pass) {
-		super();
-		this.id = id;
-		this.user_name = user_name;
-		this.user_mobno = user_mobno;
-		this.user_adderess = user_adderess;
-		this.user_emailid = user_emailid;
-		this.user_pass = user_pass;
-	}
-
+    /*
 	public User(String user_name, String user_mobno, String user_adderess, String user_emailid, String user_pass) {
 		super();
 		this.user_name = user_name;
@@ -28,9 +19,43 @@ public class User {
 		this.user_emailid = user_emailid;
 		this.user_pass = user_pass;
 	}
-
+*/
 	public User() {
-		// TODO Auto-generated constructor stub
+	
+		
+	}
+
+	public User(String user_emailid, String user_pass, String user_type) {
+		this.user_emailid = user_emailid;
+		this.user_pass = user_pass;
+		this.user_type = user_type;
+	}
+
+	public User(String user_name, String user_mobno, String user_adderess, String user_emailid, String user_pass,
+			String user_type) {
+		this.user_name = user_name;
+		this.user_mobno = user_mobno;
+		this.user_adderess = user_adderess;
+		this.user_emailid = user_emailid;
+		this.user_pass = user_pass;
+		this.user_type = user_type;
+	}
+
+		public User(int id, String user_name, String user_mobno, String user_adderess, String user_emailid,String user_pass) {
+		this.id=id;
+		this.user_name = user_name;
+		this.user_mobno = user_mobno;
+		this.user_adderess = user_adderess;
+		this.user_emailid = user_emailid;
+		this.user_pass = user_pass;
+		}
+
+    public String getUser_type() {
+		return user_type;
+	}
+
+	public void setUser_type(String user_type) {
+		this.user_type = user_type;
 	}
 
 	public int getId() {
@@ -79,8 +104,5 @@ public class User {
 
 	public void setUser_pass(String user_pass) {
 		this.user_pass = user_pass;
-	}
-
-	
-	
-}
+	  }
+   }

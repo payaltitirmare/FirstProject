@@ -13,12 +13,11 @@ import com.codeo.shop.entity.User;
 
 public class UserDaoImpl implements UserDAO {
 
-
-	private static final String INSERT_USER = "insert into user_registration(user_name, user_mobno, user_adderess, user_emailid, user_pass) values(?,?,?,?,?)" ;
+	private static final String INSERT_USER = "insert into user_registration(user_name, user_mobno, user_adderess, user_emailid, user_pass,user_type) values(?,?,?,?,?,?)" ;
 	private static final String SELECT_ALL_USERS ="select * from user_registration ";
-	private static final String DELETE_USER ="delete from user_registration where user_id= ?;";
-	private static final String EDIT_USER = "select userid, user_name, user_mobno, user_adderess, user_emailid, user_pass from user_registration where user_id=?";
-	private static  final String UPDATE_USERS_SQL = "update user_registration set user_name = ?,user_mobno= ?, user_adderess =?,user_emailid =?,user_pass =? where user_id = ?;";
+	private static final String DELETE_USER ="delete from user_registration where user_id= ?";
+	//private static final String EDIT_USER = "select user_id, user_name, user_mobno, user_adderess, user_emailid, user_pass from user_registration where user_id=?";
+    private static  final String UPDATE_USERS_SQL = "update user_registration set user_name = ?,user_mobno= ?, user_adderess =?,user_emailid =?,user_pass =? where user_id =?";
 	
 	Connection con = null;
 	
@@ -33,18 +32,20 @@ public class UserDaoImpl implements UserDAO {
 				while(resultset.next())
 				{
 					int id = resultset.getInt(1);
-					String uName = resultset.getString(2);
-					String	uMobileno = resultset.getString(3);
-					String uAddress = resultset.getString(4);
-					String uEmail = resultset.getString(5);
-					String uPassword = resultset.getString(6);
-					users.add(new User(id, uName , uMobileno , uAddress, uEmail , uPassword));
+					String user_name = resultset.getString(2);
+					String	user_mobno = resultset.getString(3);
+					String user_adderess = resultset.getString(4);
+					String user_emailid = resultset.getString(5);
+					String user_pass = resultset.getString(6);
+					String user_type = resultset.getString(7);
+					users.add(new User(id, user_name , user_mobno , user_adderess, user_emailid , user_pass));
 					}
 				} catch (SQLException e) {
 				e.printStackTrace();
 			} 
 			return users;
 	}
+	
 	@Override
 	public boolean insertUser(User user) {
 	boolean status = false;
@@ -62,11 +63,13 @@ public class UserDaoImpl implements UserDAO {
 					preparedstatement.setString(3, user.getUser_adderess());
 					preparedstatement.setString(4, user.getUser_emailid());
 					preparedstatement.setString(5, user.getUser_pass());
+					preparedstatement.setString(6, user.getUser_type());
 				}
 				if(preparedstatement!=null)
 				{
 					result = preparedstatement.executeUpdate();
 				}
+				
 				if(result!=0)
 				{
 					System.out.println("data is inserted");
@@ -119,6 +122,8 @@ public class UserDaoImpl implements UserDAO {
 		}
 		return flag;
 	}
+	/*
+	// edit user 
 	@Override
 	public User edituser(int id) {
 		
@@ -127,7 +132,6 @@ public class UserDaoImpl implements UserDAO {
 		try {
 			Statement stmt = con.createStatement();
 			ResultSet resultset = stmt.executeQuery(EDIT_USER);
-			
 			if(resultset.next())
 			{
 				user.setId(resultset.getInt("user_id"));
@@ -136,17 +140,102 @@ public class UserDaoImpl implements UserDAO {
 				user.setUser_adderess(resultset.getString("user_adderess"));
 				user.setUser_emailid(resultset.getString("user_emailid"));
 				user.setUser_pass(resultset.getString("user_pass"));
-		}
+		 }
 			} catch (SQLException e) {
 			
+		     e.printStackTrace();
+		      }
+	    return user;
+	}  
+	*/
+
+	@Override
+	public User loginDetails(String user_emailid, String user_pass) {
+		User user = new User ();
+		Connection con = ConnectionProvider.getconnection();
+		//user_id, user_name, user_mobno, user_adderess, user_emailid, user_pass, user_type
+		String login = "select user_emailid,user_pass,user_type from user_registration where ";
+		try {
+			PreparedStatement ps = con.prepareStatement(login);
+		  
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next())
+			{
+				user.setUser_emailid(rs.getString("user_emailid"));
+				user.setUser_pass(rs.getString("user_pass"));
+				user.setUser_type(rs.getString("user_type"));
+			
+			}
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+        
 		
 		return user;
 	}
 	
+	
+	public static ResultSet getUserDetails(String user_emailid, String user_pass) throws Exception {
+		
+		Connection con = null;
+		con = ConnectionProvider.getconnection();
+		
+		String query= "select * from user_registration where user_emailid=? and user_pass=?";
+		 PreparedStatement ps = con.prepareStatement(query);
+		 ps.setString(1,user_emailid );
+            ps.setString(2, user_pass);
+            ResultSet rs = ps.executeQuery();
+		
+            return rs;
+	}
+	}
+
+
+	/*
+	public static ResultSet validateUser(String user_emailid, String user_pass, String user_type) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		
+		con = ConnectionProvider.getconnection();
+		String sql = "select * from user_registration where user_emailid=? and user_pass=?";
+		try {
+			preparedStatement = con.prepareStatement(sql);
+			preparedStatement.setString(1, user_emailid);
+			preparedStatement.setString(2, user_pass);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			return resultSet;
+			
+		}
+		
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+			if (preparedStatement != null) {
+			preparedStatement.close();
+			}
+			if (con != null) {
+			con.close();
+			}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				}
+				}
+		return resultSet;
+	}
+}
+*/
+	/*
 	public boolean delete(int id) {
-		 boolean status=false;
+		 boolean status = false;
 		con = ConnectionProvider.getconnection();
 		
 		  PreparedStatement preparedStatement;
@@ -159,5 +248,8 @@ public class UserDaoImpl implements UserDAO {
 			e.printStackTrace();
 		}
 			  return true;
-		}
-     }
+		}   */
+	
+	//for login user and admin
+	
+	

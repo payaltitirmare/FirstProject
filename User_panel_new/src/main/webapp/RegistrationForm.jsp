@@ -35,6 +35,9 @@
 									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 									<input type="hidden" name="id" id="re_pass" />
 								</div>
+								
+								<input type="hidden" name="user_type" value="User" />
+								
 								<!-- changes current -->
 								<div class="form-group">
 									<label for="name"> <i
@@ -69,8 +72,7 @@
 								<div class="form-group">
 									<input type="checkbox" name="agree-term" id="agree-term"
 										class="agree-term" /> <label for="agree-term"
-										class="label-agree-term"><span><span></span></span>I
-										agree all statements in <a href="#" class="term-service">Terms
+										class="label-agree-term"><span><span></span></span>I agree all statements in <a href="#" class="term-service">Terms
 											of service</a></label>
 								</div>
 								<div class="form-group form-button">
@@ -110,6 +112,9 @@
 								<div class="form-group">
 									<label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
 									<input type="hidden" name="id" id="re_pass" />
+									
+									 <input type="text" name="user_type" value="User">
+					 
 								</div>
 								<div class="form-group">
 									<label for="name"> <i
@@ -139,7 +144,9 @@
 									<input type="password" name="re_pass" id="re_pass"
 										placeholder="Confirm password" />
 								</div>
-
+                                  
+                                  	
+                                  
 								<div class="form-group">
 									<input type="checkbox" name="agree-term" id="agree-term"
 										class="agree-term" /> <label for="agree-term"
@@ -180,6 +187,6 @@
 	   if(name ==""){
 		   document.getElementById("uname").innerHTML="***please enter your name";
 	   }
-	  7654+
+	  
        </script>
 </body>

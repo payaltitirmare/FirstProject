@@ -6,7 +6,6 @@
 <!--  <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>  -->
 
 <html>
-
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -108,6 +107,15 @@
 															class="form-control square" name="p_desc"
 															value='<c:out value="${product.prod_description}"></c:out>' /></textarea>
 													</div>
+													
+													
+													<!--  
+													<div class="form-group">
+														<label for="eventRegInput1">Enter Product description </label>
+														<input type="text" 	class="form-control" name="p_price" style="height:150px"
+															value='<c:out value="${product.prod_description}" ></c:out>' />	
+													</div>
+														 -->
 
 													<div class="form-group">
 														<label>Enter Product Price </label> <input type="text"
@@ -120,7 +128,7 @@
 															class="form-control" name="p_discount"
 															value='<c:out value="${product.prod_discount}"></c:out>' />
 													</div>
-
+                                                     
 													<div class="form-group">
 														<!-- <label >product id</label>   -->
 
@@ -130,16 +138,18 @@
 													<div class="form-group">
 														<label>Enter Product Quntity </label> <input type="text"
 															class="form-control" name="p_quntity"
-															value='<c:out value="${product.prod_discount}"></c:out>' />
+															value='<c:out value="${product.prod_quantity}"></c:out>' />
 													</div>
 
 													<div class="form-group">
-														<label>Select Product Image </label> <input type="file"
+														<label> Product Image </label> <input type="file"
 															class="form-control" name="p_image"
-															value='<c:out value="${product.prod_discount}"></c:out>' />
+															value='<c:out value="${product.prod_imageName}"></c:out>' />
 													</div>
+														
 												</div>
 
+                                            
 												<div class="form-group">
 													<label>Enter Product Category </label> <select
 														class="form-control" name="cid">
@@ -154,10 +164,7 @@
 
 
 												<div class="form-actions center">
-													<button type="button"
-														class="btn btn-raised btn-warning mr-1">
-														<i class="ft-x"></i> Cancel
-													</button>
+													
 													<button type="submit" class="btn btn-raised btn-primary">
 														<i class="fa fa-check-square-o"></i>Add Product
 													</button>
